@@ -2,8 +2,8 @@ package Forms;
 
 
 import Users.User;
-import blackjack.DB;
-import blackjack.DB;
+import DataBase.DB;
+import DataBase.DB;
 import Forms.Game;
 import Resources.LocalizationUtil;
 import Resources.GameUtil;
@@ -278,10 +278,16 @@ public class WelcomeScreen extends javax.swing.JFrame {
     
     private void btnGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuestActionPerformed
         this.setVisible(false);
-        Game game;
-          game = new Game();
+        Game game = null;
+        if (this.language.equals("iw"))
+        {
+          game = new Game(this,this.language);
+        }
+        else
+            game = new Game(this);
+            
             game.initializeGUI();
-           this.initComponents();
+        //   this.initComponents();
         
     }//GEN-LAST:event_btnGuestActionPerformed
 

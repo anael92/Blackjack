@@ -2,10 +2,11 @@ package Forms;
 
 
 import Resources.GameUtil;
+import Resources.LocalizationUtil;
 import Users.User;
 import blackjack.BoardPanel;
 import blackjack.Card;
-import blackjack.DB;
+import DataBase.DB;
 import blackjack.Deck;
 import blackjack.Hand;
 import blackjack.HandPanel;
@@ -20,7 +21,10 @@ import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -28,16 +32,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author IBM
- */
     public class Game implements ActionListener {
 	
 	//
@@ -56,7 +50,7 @@ import javax.swing.Timer;
 	JLabel playerCashLabel;
 	JLabel playerWinsLabel;
 	JLabel dealerWinsLabel;
-            JLabel status;
+        JLabel status;
 	
 	//
 	// Dealer Variables
@@ -73,8 +67,10 @@ import javax.swing.Timer;
 	private static int MAX_BET = 500;
 	private int playerWins = 0;
 	private int dealerWins = 0;
-	private int playerId;
-        private UserHome previous;
+	private int playerId = 0;
+        private UserHome previous = null;
+        String language = "";
+        private WelcomeScreen guestPrev = null;
 	/**
 	 * Each possible game state.
 	 * 
@@ -92,13 +88,7 @@ import javax.swing.Timer;
 		DEALER_AI,
 		RESOLVE
 	}
-	
-	/**
-	 * Default Constructor.
-     * @param prev
-	 * @throws IOException 
-	 */
-                
+	             
 	public Game() {
 		deck = new Deck();
 		playerHands.add(new Hand()); // Default Hand.              
@@ -107,15 +97,33 @@ import javax.swing.Timer;
         
 	public Game(UserHome prev) {
                 this();
-                previous = prev;
+                previous = prev;          
+	}
+        
+        public Game(WelcomeScreen prev) {
+                this();
+                guestPrev = prev;          
+	}
+        
+        public Game(WelcomeScreen prev,String lang) {
+                this(prev);
+                this.language = lang;
                         
 	}
         
-        	public Game(User u,UserHome w)  {
+            public Game(User u,UserHome w)  {
                     this(w);
                     this.playerId = u.getId();
                     this.playerCash = u.getBalance();
                     this.playerWins = u.getWins();
+	}
+        
+        public Game(User u,UserHome w, String lang)  {
+                this(w);
+                this.playerId = u.getId();
+                this.playerCash = u.getBalance();
+                this.playerWins = u.getWins();
+                this.language = lang;
 	}
 	
 	/**
@@ -125,7 +133,12 @@ import javax.swing.Timer;
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setPreferredSize(new Dimension(800, 600));
 		frame.setResizable(false);
-                 GameUtil.setIcon(frame);    
+               
+                String file = "./src/img/card-symbols_bsmall.png";
+                ImageIcon img = new ImageIcon(file);
+                 frame.setIconImage(img.getImage());
+                
+                
 		//
 		// Initialize Board Panel
 		//
@@ -191,7 +204,11 @@ import javax.swing.Timer;
 		// Initialize System Message Panel
 		//
 		JPanel systemMessagePanel = new JPanel();
+                if (this.language.equals("iw"))
+                    systemMessage = new JLabel("בחר סכום ולחץ על המר כדי להתחיל");
+                else
 		systemMessage = new JLabel("Enter an amount and press \"Bet\" to begin.");
+                
 		systemMessagePanel.add(systemMessage);
 		
 		boardPanel.add(systemMessagePanel, createConstraints(0, 0, 6, 1, 0, 0, GridBagConstraints.HORIZONTAL, false));
@@ -231,23 +248,42 @@ import javax.swing.Timer;
                 frame.addWindowListener(new WindowAdapter(){
                     @Override
                     public void windowClosing(WindowEvent e) {
-                        DB db = DB.getInstance();
-                        db.updateUser(playerId, playerWins, playerCash); 
-                          if (previous!= null)
+                        if (playerId != 0)
                         {
-                            frame.dispose();
+                             DB db = DB.getInstance();
+                             db.updateUser(playerId, playerWins, playerCash); 
                              previous.setVisible(true);
                         }
-                          else{
-                              System.exit(1);
-                          }
-                          
-                        
-                    }
-                    
+                        else if (guestPrev != null)
+                        {
+                            guestPrev.setVisible(true);
+                        }
+                             frame.dispose();
+                    }               
                 });
                 
+                 if (this.language.equals("iw"))
+                {
+                    changeToHebrew();
+                }      
 	}
+        
+         public void changeToHebrew()
+        {
+          LocalizationUtil.localizedResourceBundle = LocalizationUtil.getBundleGameIW();
+          updateCaptions();
+          LocalizationUtil.changeOptionPane_iw();
+        }
+         
+         public void updateCaptions()
+         {
+             betButton.setText(LocalizationUtil.localizedResourceBundle.getString("betButton"));
+             hitButton.setText(LocalizationUtil.localizedResourceBundle.getString("hitButton"));
+             stayButton.setText(LocalizationUtil.localizedResourceBundle.getString("stayButton"));
+             doubleDownButton.setText(LocalizationUtil.localizedResourceBundle.getString("doubleDownButton"));
+             splitButton.setText(LocalizationUtil.localizedResourceBundle.getString("splitButton"));
+         }
+        
 	
 	/**
 	 * Updates the state of the game and refreshes the GUI.
@@ -259,7 +295,13 @@ import javax.swing.Timer;
                        for (Hand c : playerHands) {
                        total = c.getValue();
                         }
+                if (this.language.equals("iw"))
+                {
+                    status.setText("סהכ: "+ total);
+                }
+                else{
                       status.setText("Sum of cards: " + total);
+                }
 		
 		switch(state)
 		{
@@ -309,7 +351,11 @@ import javax.swing.Timer;
 			
 			break;
 		case HITTING:
+                    if (this.language.equals("iw"))
+                             systemMessage.setText("בחר פעולה. [יד " + (currentHandIndex + 1) + "]");
+                        else
 			systemMessage.setText("Select an action. [Hand " + (currentHandIndex + 1) + "]");
+                    
 			betButton.setEnabled(false);
 			hitButton.setEnabled(true);
 			stayButton.setEnabled(true);
@@ -347,9 +393,18 @@ import javax.swing.Timer;
 			break;
 		}
 		
-		playerCashLabel.setText("Cash: $" + playerCash);
-		playerWinsLabel.setText("Wins: " + playerWins);
-		dealerWinsLabel.setText("Loses: " + dealerWins);
+                if (this.language.equals("iw"))
+                {
+                                 
+                    playerCashLabel.setText("קופה: $" + playerCash);
+                    playerWinsLabel.setText("ניצחונות: " + playerWins);
+                    dealerWinsLabel.setText("הפסדים: " + dealerWins);
+                }
+                else{
+                    playerCashLabel.setText("Cash: $" + playerCash);
+                    playerWinsLabel.setText("Wins: " + playerWins);
+                    dealerWinsLabel.setText("Loses: " + dealerWins);
+                }
 		frame.repaint();
 	}
 	
@@ -407,10 +462,16 @@ import javax.swing.Timer;
 			switch(hand.getWinner(dealerHand))
 			{
 			case 0: // Dealer Win
+                                if (this.language.equals("iw"))
+                                    systemMessage.setText("הדילר ניצח את היד הזו...");
+                                else    
 				systemMessage.setText("Dealer wins this hand...");
 				dealerWins++;
 				break;
 			case 1: // Player Win
+                                if (this.language.equals("iw"))
+                                    systemMessage.setText("ניצחת!!!");
+                                else  
 				systemMessage.setText("You win this hand!");
 				playerCash += hand.getBet() * 2; // Give bet back and winnings.
 				
@@ -422,6 +483,9 @@ import javax.swing.Timer;
 				playerWins++;
 				break;
 			case -1: // Tie
+                                if (this.language.equals("iw"))
+                                 systemMessage.setText("תיקו!");   
+                                  else
 				systemMessage.setText("Push!");
 				playerCash += hand.getBet(); // Give bet back.
 				break;
@@ -437,8 +501,14 @@ import javax.swing.Timer;
 	private void dealCard(Hand hand, boolean faceUp) {
 		Card newCard = deck.drawCard(faceUp);
 		if(newCard == null) // Reshuffle if we are out of cards.
-		{
+		{       
+                    if (this.language.equals("iw"))
+                    {
+                       systemMessage.setText("מערבב קלפים...");
+                    }
+                    else{
 			systemMessage.setText("Reshuffling...");
+                    }
 			deck.reshuffle();
 			dealCard(hand, faceUp);
 		}
@@ -464,10 +534,16 @@ import javax.swing.Timer;
 			try {
 				int betAmount = Integer.parseInt(betAmountTextField.getText());
 				
-				if(betAmount > playerCash)
+				if(betAmount > playerCash){
 					systemMessage.setText("You don't have enough cash...");
+                                }
 				else if(betAmount < MIN_BET || betAmount > MAX_BET)
+                                {
+                                    if (this.language.equals("iw"))
+                                        systemMessage.setText("ההימור חייב להיות בין " + MIN_BET + " ל " + MAX_BET + ".");
+                                    else
 					systemMessage.setText("Bet must be between " + MIN_BET + " and " + MAX_BET + ".");
+                                }
 				else {
 					// This will ensure hands are empty before dealing begins
 					// and also allow us to keep last round's cards still displayed
@@ -487,6 +563,9 @@ import javax.swing.Timer;
 				}
 				
 			} catch(NumberFormatException e) {
+                            if (this.language.equals("iw"))
+                                  systemMessage.setText("ההימור חייב להיות מספר...");  
+                            else
 				systemMessage.setText("Bet must be an integer value...");
 				return;
 			}	

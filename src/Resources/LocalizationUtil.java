@@ -61,6 +61,24 @@ public class LocalizationUtil {
           localizedResourceBundle = ResourceBundle.getBundle("Resources.UiScoreTable_iw", new Locale("iw"));
           return localizedResourceBundle;
      }
+      
+       public static ResourceBundle getBundleGameIW()
+     {
+          localizedResourceBundle = ResourceBundle.getBundle("Resources.UiGame_iw", new Locale("iw"));
+          return localizedResourceBundle;
+     }
+       
+        public static ResourceBundle getBundleInputValidation()
+     {
+          localizedResourceBundle = ResourceBundle.getBundle("Resources.UiInputValidation");
+          return localizedResourceBundle;
+     }
+        
+         public static ResourceBundle getBundleInputValidationIW()
+     {
+          localizedResourceBundle = ResourceBundle.getBundle("Resources.UiInputValidation_iw", new Locale("iw"));
+          return localizedResourceBundle;
+     }
      
          public static void changeOptionPane_iw()
      {      

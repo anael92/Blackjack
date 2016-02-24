@@ -6,7 +6,9 @@
 package Forms;
 
 import Users.User;
-import blackjack.DB;
+import DataBase.DB;
+import Resources.LocalizationUtil;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -14,12 +16,18 @@ import blackjack.DB;
  */
 public class InputValidation {
     
+    public static ResourceBundle localizedResourceBundle;
+
+    public static void setLocalizedResourceBundle(ResourceBundle localizedResourceBundle) {
+        InputValidation.localizedResourceBundle = localizedResourceBundle;
+    }
+    
     public static String checkFirstName(String firstName)
     {
         if (firstName.isEmpty())
-            return "First Name can't be empty";
+            return LocalizationUtil.localizedResourceBundle.getString("Empty");
         else if (firstName.matches(".*\\d+.*"))
-            return "First Name Can't contain numbers!";
+            return LocalizationUtil.localizedResourceBundle.getString("Digit");
         else 
            return "";
     }
@@ -27,9 +35,9 @@ public class InputValidation {
         public static String checkLastName(String lastName)
     {
         if (lastName.isEmpty())
-            return "Last Name can't be empty";
+            return LocalizationUtil.localizedResourceBundle.getString("Empty");
         else if (lastName.matches(".*\\d+.*"))
-            return "Last Name Can't contain numbers!";
+            return LocalizationUtil.localizedResourceBundle.getString("Digit");
         else 
            return "";
     }
@@ -41,14 +49,12 @@ public class InputValidation {
        for (User u : db.getUsers())
        {
            if (u.getUserName().equals(userName))
-               return "User Name is taken, Please Choose another one";
-           
-       }
-       
+               return LocalizationUtil.localizedResourceBundle.getString("UserNameTaken");
+       } 
        if (userName.length() > 20 || userName.length() < 4)
-           return "Invalid user name (up to 20 letters, minimum 4";
+           return LocalizationUtil.localizedResourceBundle.getString("UserNameLegnth");
        else if (userName.isEmpty())
-           return "User name can't be empty!";
+           return LocalizationUtil.localizedResourceBundle.getString("Empty");
        
        return "";
     }
@@ -57,9 +63,9 @@ public class InputValidation {
     public static String checkPassword(String password)
     {
        if (password.length() < 6 || password.length() > 20) 
-           return "Invalid paswword (up to 20 letters, minimum 6";
+           return LocalizationUtil.localizedResourceBundle.getString("PasswordLength");
        else if (password.isEmpty())
-           return "Password can't be empty!";
+         return LocalizationUtil.localizedResourceBundle.getString("Empty");
        
        return "";
 

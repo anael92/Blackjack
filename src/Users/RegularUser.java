@@ -5,7 +5,7 @@
  */
 package Users;
 
-import blackjack.DB;
+import DataBase.DB;
 import blackjack.Utils;
 import static blackjack.Utils.ACCOUNTTYPE;
 
