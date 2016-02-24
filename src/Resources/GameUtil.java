@@ -110,12 +110,11 @@ public class GameUtil {
         clip.start();
     }
     
-    
-    
     public static void setIcon(JFrame frame)
     {
         String file = "./src/img/card-symbols_b.png";
         ImageIcon img = new ImageIcon(file);
         frame.setIconImage(img.getImage());
     }
+    
 }

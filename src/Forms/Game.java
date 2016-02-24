@@ -473,6 +473,18 @@ import javax.swing.Timer;
                                     systemMessage.setText("ניצחת!!!");
                                 else  
 				systemMessage.setText("You win this hand!");
+                                WinPopup winPopup = new WinPopup();
+                                winPopup.setVisible(true);
+                            new java.util.Timer().schedule(
+                                    new java.util.TimerTask() {
+                                @Override
+                                public void run() {
+                                   winPopup.setVisible(false); 
+                                }
+                            },
+                                    7000
+                            );
+                                
 				playerCash += hand.getBet() * 2; // Give bet back and winnings.
 				
 				// If the player had a blackjack, pay back extra 50% (Blackjack Pays 3:2)
