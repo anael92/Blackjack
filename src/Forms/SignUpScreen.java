@@ -316,10 +316,16 @@ public class SignUpScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordKeyReleased
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        int confirmed = JOptionPane.showConfirmDialog(null, 
+        int confirmed;
+        if(this.language.equals("iw"))
+        {
+            confirmed = LocalizationUtil.exitDialog();
+        }
+        else{
+        confirmed = JOptionPane.showConfirmDialog(null, 
         "Are you sure you want to exit the program?", "Exit Program",
         JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
-
+        }
     if (confirmed == JOptionPane.YES_OPTION) {
       System.exit(0);
     }

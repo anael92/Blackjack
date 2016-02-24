@@ -46,6 +46,7 @@ public class ListOfUsers extends javax.swing.JFrame {
         initTable();
         if (lang.equals("iw"))
         {
+            LocalizationUtil.changeOptionPane();
             this.language = lang;
             LocalizationUtil.localizedResourceBundle = LocalizationUtil.getBundleListOfUsersIW();
             updateCaption();
@@ -55,6 +56,7 @@ public class ListOfUsers extends javax.swing.JFrame {
      private void updateCaption()
      {
          Vector columnsName = new Vector();
+         columnsName.addElement(LocalizationUtil.localizedResourceBundle.getString("Id"));
         columnsName.addElement(LocalizationUtil.localizedResourceBundle.getString("FirstName"));
         columnsName.addElement(LocalizationUtil.localizedResourceBundle.getString("LastName"));
         columnsName.addElement(LocalizationUtil.localizedResourceBundle.getString("Gender"));
@@ -62,6 +64,7 @@ public class ListOfUsers extends javax.swing.JFrame {
         dtm.setColumnIdentifiers(columnsName);
         btnChangePermission.setText(LocalizationUtil.localizedResourceBundle.getString("btnChangePermission"));
         btnRemoveUser.setText(LocalizationUtil.localizedResourceBundle.getString("btnRemoveUser"));
+        usersTable.removeColumn(usersTable.getColumnModel().getColumn(0));
      }
 
     private void initTable()
@@ -85,7 +88,7 @@ public class ListOfUsers extends javax.swing.JFrame {
         }
        };
        Vector columnsName = new Vector();
-
+        columnsName.addElement("Id");
         columnsName.addElement("First Name");
         columnsName.addElement("Last Name");
         columnsName.addElement("Gender");
@@ -95,12 +98,13 @@ public class ListOfUsers extends javax.swing.JFrame {
        while (resultSet.next())
        {
            Vector dataRows = new Vector();
-           
+            int id = resultSet.getInt("ID");
             String firstName = resultSet.getString("FIRSTNAME");
             String lastName = resultSet.getString("LASTNAME");
             String gender = resultSet.getString("GENDER");
             String usertName = resultSet.getString("USERNAME");
 
+          dataRows.addElement(id);  
           dataRows.addElement(firstName);
           dataRows.addElement(lastName);
           dataRows.addElement(gender);
@@ -116,7 +120,7 @@ public class ListOfUsers extends javax.swing.JFrame {
        }
        usersTable.setBackground(new java.awt.Color(204, 204, 255));
        usersTable.getTableHeader().setReorderingAllowed(false);
-       
+       usersTable.removeColumn(usersTable.getColumnModel().getColumn(0));
        
         
     }
@@ -229,8 +233,9 @@ public class ListOfUsers extends javax.swing.JFrame {
         if (selectedRow != -1)
         {
             usersTable.setSelectionBackground(Color.WHITE);
-            id = (int) usersTable.getValueAt(selectedRow, 0);
-            userName = (String) usersTable.getValueAt(selectedRow, 4);
+           // id = (int) usersTable.getValueAt(selectedRow, 0);
+           id = (int) usersTable.getModel().getValueAt(usersTable.getSelectedRow(),0);
+            userName = (String) usersTable.getValueAt(selectedRow, 3);
         }
     }//GEN-LAST:event_usersTableMouseClicked
 
@@ -254,14 +259,22 @@ public class ListOfUsers extends javax.swing.JFrame {
                     }
                 }
             else{
-        
-            int option = JOptionPane.showConfirmDialog(null,
+                       int option;
+                        if (this.language.equals("iw")) {
+                            option = JOptionPane.showConfirmDialog(null,
+                                    "האם אתה בטוח שאתה רוצה לשנות את " + userName + " לאדמין?", "שינוי הרשאה",
+                                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+                        }
+                      else{
+                    option = JOptionPane.showConfirmDialog(null,
                         "Are you sure you want to make " + userName + " admin?","Change Permission", 
                 JOptionPane.OK_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE);
+                        }
         if (option == JOptionPane.OK_OPTION) {
                         db.changePermission(id);
                         initTable();
                     }
+                      
                     }   
         }
         }
@@ -278,34 +291,62 @@ public class ListOfUsers extends javax.swing.JFrame {
                 User u = db.findUserById(id);
                 if (u != null) {
                     if (u.getPermission() == 1) {
-                        JOptionPane.showMessageDialog(null, "You cant delete an admin!", "Invalid Option",
+                        if (this.language.equals("iw"))
+                        {
+                            JOptionPane.showMessageDialog(null, "לא ניתן למחוק אדמין!!", "אופציה שגויה",
                                 JOptionPane.ERROR_MESSAGE);
+                        }
+                            else
+                        {
+                           JOptionPane.showMessageDialog(null, "You cant delete an admin!", "Invalid Option",
+                                JOptionPane.ERROR_MESSAGE);  
+                        }
+                       
                     } 
                     else{
-            
-            int option = JOptionPane.showConfirmDialog(null,
+                         int option;
+                         if (this.language.equals("iw"))
+                         {
+                                          option = JOptionPane.showConfirmDialog(null,
+                    "האם אתה בטוח שברצונך למחוק את " + userName + " ?", "הסרת משתמש",
+                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+                         }
+                         else{
+             option = JOptionPane.showConfirmDialog(null,
                     "Are you sure you want to delete " + userName + " ?", "Delete User",
                     JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+                         }
             if (option == JOptionPane.OK_OPTION) {
                         db.removeAccount(u);
                         initTable();
                     }
-                    else {
-                    System.out.println("can't find user");
                 }
+          }
             }
-        } else {
+             else {
+            if (this.language.equals("iw"))
+            {
+               JOptionPane.showMessageDialog(null, "בחר משתמש!", "הסרת משתמש",
+                    JOptionPane.INFORMATION_MESSAGE); 
+            }
+            else{
             JOptionPane.showMessageDialog(null, "Please select user !", "Delete User",
                     JOptionPane.INFORMATION_MESSAGE);
         }
-     }
+        }
     }//GEN-LAST:event_btnRemoveUserActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        int confirmed = JOptionPane.showConfirmDialog(null, 
+        int confirmed;
+        if(this.language.equals("iw"))
+        {
+            confirmed = LocalizationUtil.exitDialog();
+        }
+        else{
+        confirmed = JOptionPane.showConfirmDialog(null, 
         "Are you sure you want to exit the program?", "Exit Program",
         JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
-
+        }
     if (confirmed == JOptionPane.YES_OPTION) {
       System.exit(0);
     }

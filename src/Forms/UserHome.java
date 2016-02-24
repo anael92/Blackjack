@@ -248,9 +248,7 @@ public JMenuBar getMenu()
         int confirmed;
         if(this.language.equals("iw"))
         {
-          confirmed = JOptionPane.showConfirmDialog(null, 
-        "האם אתה בטוח שאתה רוצה לצאת?", "יציאה מהתוכנית",
-        JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE); 
+            confirmed = LocalizationUtil.exitDialog();
         }
         else{
         confirmed = JOptionPane.showConfirmDialog(null, 

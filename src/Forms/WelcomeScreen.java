@@ -276,13 +276,19 @@ public class WelcomeScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSignUpActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        int confirmed = JOptionPane.showConfirmDialog(null,
-                "Are you sure you want to exit the program?", "Exit Program",
-                JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-
-        if (confirmed == JOptionPane.YES_OPTION) {
-            System.exit(0);
+        int confirmed;
+        if(this.language.equals("iw"))
+        {
+            confirmed = LocalizationUtil.exitDialog();
         }
+        else{
+        confirmed = JOptionPane.showConfirmDialog(null, 
+        "Are you sure you want to exit the program?", "Exit Program",
+        JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+        }
+    if (confirmed == JOptionPane.YES_OPTION) {
+      System.exit(0);
+    }
     }//GEN-LAST:event_formWindowClosing
 
     private void btnEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnglishActionPerformed
@@ -308,6 +314,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
         labPassword.setBounds(270, 120, 40, 20);
         labPassword.setFont(new java.awt.Font("Arial", 1, 13));
         labBlackjack.setFont(new java.awt.Font("Arial", 1, 36));
+        LocalizationUtil.changeOptionPane();
     }
     
         public void initEnglish()
