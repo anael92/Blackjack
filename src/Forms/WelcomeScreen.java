@@ -61,6 +61,12 @@ public class WelcomeScreen extends javax.swing.JFrame {
         btnEnglish.setContentAreaFilled(false);
         btnEnglish.setBorderPainted(false);
         btnEnglish.setActionCommand("en");
+        
+       this.setResizable(false);
+        
+        
+  
+       
     }
 
     /**
@@ -98,6 +104,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
         getContentPane().add(labPassword);
         labPassword.setBounds(10, 120, 90, 20);
 
+        txtUserName.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         txtUserName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUserName.setText("Enter your user name here");
         txtUserName.setName("txtUserName"); // NOI18N
@@ -110,9 +117,11 @@ public class WelcomeScreen extends javax.swing.JFrame {
         txtUserName.setBounds(100, 80, 160, 25);
         txtUserName.getAccessibleContext().setAccessibleName("txtUserName");
 
+        txtPassword.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPassword.setText("Enter your password here");
         txtPassword.setName("txtPassword"); // NOI18N
+        txtPassword.setPreferredSize(new java.awt.Dimension(140, 23));
         txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtPasswordMouseClicked(evt);
@@ -123,7 +132,9 @@ public class WelcomeScreen extends javax.swing.JFrame {
         txtPassword.getAccessibleContext().setAccessibleName("txtPassword");
         txtPassword.getAccessibleContext().setAccessibleDescription("");
 
+        btnSignUp.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         btnSignUp.setText("Sign Up");
+        btnSignUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSignUp.setName("btnSignUp"); // NOI18N
         btnSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,8 +145,13 @@ public class WelcomeScreen extends javax.swing.JFrame {
         btnSignUp.setBounds(180, 160, 80, 30);
         btnSignUp.getAccessibleContext().setAccessibleName("btnSignUp");
 
+        btnLogin.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         btnLogin.setText("Login");
+        btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogin.setMaximumSize(new java.awt.Dimension(73, 25));
+        btnLogin.setMinimumSize(new java.awt.Dimension(73, 25));
         btnLogin.setName("btnLogin"); // NOI18N
+        btnLogin.setPreferredSize(new java.awt.Dimension(73, 25));
         btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnLoginMouseClicked(evt);
@@ -150,7 +166,9 @@ public class WelcomeScreen extends javax.swing.JFrame {
         getContentPane().add(labBlackjack);
         labBlackjack.setBounds(40, 10, 280, 50);
 
+        btnGuest.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         btnGuest.setText("Play as a Guest");
+        btnGuest.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuest.setMaximumSize(new java.awt.Dimension(57, 23));
         btnGuest.setMinimumSize(new java.awt.Dimension(57, 23));
         btnGuest.setPreferredSize(new java.awt.Dimension(60, 30));
@@ -170,28 +188,33 @@ public class WelcomeScreen extends javax.swing.JFrame {
 
         btnHebrew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Israel.png"))); // NOI18N
         btnHebrew.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHebrew.setPreferredSize(new java.awt.Dimension(70, 70));
         btnHebrew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHebrewActionPerformed(evt);
             }
         });
         getContentPane().add(btnHebrew);
-        btnHebrew.setBounds(0, 340, 50, 50);
+        btnHebrew.setBounds(10, 340, 50, 50);
 
         btnEnglish.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/United States.png"))); // NOI18N
         btnEnglish.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEnglish.setMaximumSize(new java.awt.Dimension(83, 59));
+        btnEnglish.setMinimumSize(new java.awt.Dimension(83, 59));
+        btnEnglish.setPreferredSize(new java.awt.Dimension(83, 59));
         btnEnglish.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnglishActionPerformed(evt);
             }
         });
         getContentPane().add(btnEnglish);
-        btnEnglish.setBounds(50, 340, 50, 50);
+        btnEnglish.setBounds(60, 340, 50, 50);
 
+        labBackground.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
         labBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/PokerChips.jpg"))); // NOI18N
         labBackground.setName("labBackground"); // NOI18N
         getContentPane().add(labBackground);
-        labBackground.setBounds(0, 0, 620, 390);
+        labBackground.setBounds(0, 0, 620, 387);
         labBackground.getAccessibleContext().setAccessibleName("labBackground");
 
         setSize(new java.awt.Dimension(636, 425));

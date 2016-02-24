@@ -248,7 +248,7 @@ public class SignUpScreen extends javax.swing.JFrame {
         getContentPane().add(labValidPassword);
         labValidPassword.setBounds(110, 320, 200, 15);
 
-        labBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ACE222.jpg"))); // NOI18N
+        labBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ACE.jpg"))); // NOI18N
         getContentPane().add(labBackground);
         labBackground.setBounds(0, 0, 500, 530);
 
