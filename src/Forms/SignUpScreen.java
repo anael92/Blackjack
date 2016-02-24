@@ -37,15 +37,19 @@ public class SignUpScreen extends javax.swing.JFrame {
     public SignUpScreen(WelcomeScreen previous) {
         this();
         this.previous = previous;
+         if (language.equals("iw"))
+        {
+          changeToHebrew();
+          InputValidation.setLocalizedResourceBundle(LocalizationUtil.getBundleInputValidationIW());
+        }
+        else{
+            InputValidation.setLocalizedResourceBundle(LocalizationUtil.getBundleInputValidation());
+        }
     }
     
     public SignUpScreen(WelcomeScreen previous,String language) {
         this(previous);
         this.language = language;
-        if (language.equals("iw"))
-        {
-          changeToHebrew();
-        }
     }
     
     private void initMyComponents()

@@ -64,7 +64,7 @@ public class UserHome extends javax.swing.JFrame {
        
         public void changeToHebrew()
         {
-          LocalizationUtil.localizedResourceBundle = ResourceBundle.getBundle("Resources.UiHome_iw", new Locale("iw"));
+          LocalizationUtil.localizedResourceBundle = LocalizationUtil.getBundleHomeIW();
           updateCaptions();
           LocalizationUtil.changeOptionPane_iw();
         }
@@ -201,8 +201,15 @@ public JMenuBar getMenu()
 
     private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
         this.setVisible(false);  
-        Game game = new Game(player,this);
-        game.initializeGUI();
+        Game game;
+        if (this.language.equals("iw"))
+        {
+          game = new Game(player,this,this.language);  
+        }
+        else{
+            game = new Game(player,this);
+        }
+        game.initializeGUI();  
     }//GEN-LAST:event_btnPlayActionPerformed
 
     private void btnScoreTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScoreTableActionPerformed

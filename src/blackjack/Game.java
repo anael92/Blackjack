@@ -5,6 +5,7 @@
  */
 package blackjack;
 
+import DataBase.DB;
 import Users.User;
 import java.util.ArrayList;
 import java.util.List;
