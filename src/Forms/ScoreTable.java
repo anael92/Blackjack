@@ -113,10 +113,6 @@ public class ScoreTable extends javax.swing.JFrame {
                     break;
                 }
            }
-//            if (userId == player.getId())
-//            {
-//                scoreTable.setSelectionBackground(Color.black);
-//            }
             
           dataRows.addElement(userName);
           dataRows.addElement(wins);

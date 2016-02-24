@@ -5,7 +5,7 @@
  */
 package DataBase;
 
-import Forms.Score;
+import blackjack.Score;
 import Users.Admin;
 import Users.RegularUser;
 import Users.User;

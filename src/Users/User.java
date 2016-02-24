@@ -155,9 +155,5 @@ public abstract class User {
     
     public abstract boolean changePassword(String oldPassword,String newPassword);
     public abstract void removeAccount(User user);
-    // public void signup
-    // public start game
-    // public show score table
-    // send message//
     
 }

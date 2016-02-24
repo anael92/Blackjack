@@ -6,6 +6,7 @@
 package Users;
 
 import DataBase.DB;
+import Inteface.IAdmin;
 import blackjack.Utils;
 import blackjack.Utils.ACCOUNTTYPE;
 
@@ -13,7 +14,7 @@ import blackjack.Utils.ACCOUNTTYPE;
  *
  * @author IBM
  */
-public class Admin extends User{
+public class Admin extends User implements IAdmin{
     
     DB db = DB.getInstance();
     
@@ -52,6 +53,7 @@ public class Admin extends User{
         db.removeAccount(user);
     }
     
+    @Override
     public void changePermission(User user)
     {
         db.changePermission(user.getId());

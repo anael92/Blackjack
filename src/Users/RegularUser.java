@@ -6,14 +6,13 @@
 package Users;
 
 import DataBase.DB;
-import blackjack.Utils;
-import static blackjack.Utils.ACCOUNTTYPE;
+import Inteface.IUserAction;
 
 /**
  *
  * @author IBM
  */
-public class RegularUser extends User {
+public class RegularUser extends User implements IUserAction {
     DB db = DB.getInstance();
     
     public RegularUser() {}
