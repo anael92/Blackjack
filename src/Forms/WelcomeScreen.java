@@ -284,11 +284,12 @@ public class WelcomeScreen extends javax.swing.JFrame {
     }
     
     private void btnGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuestActionPerformed
+        this.setVisible(false);
         Game game;
           game = new Game();
             game.initializeGUI();
            this.initComponents();
-        this.setVisible(false);
+        
     }//GEN-LAST:event_btnGuestActionPerformed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
