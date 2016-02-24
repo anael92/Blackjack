@@ -42,7 +42,9 @@ public class AdminHome extends UserHome {
     }
      
      public AdminHome(User player,WelcomeScreen previous,String lang) {
-         this(player,previous);
+         super(player,previous,lang);
+         initComponents();
+         initMyComponents();
          this.language = lang;
         if (lang.equals("iw"))
         {

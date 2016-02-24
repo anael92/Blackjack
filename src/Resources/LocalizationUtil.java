@@ -77,7 +77,20 @@ public class LocalizationUtil {
         } else {
             return false;
         }
+    
     }
     
-        
+    public static int exitDialog()
+    {
+        int confirmed;
+        confirmed = JOptionPane.showConfirmDialog(null,
+                "האם אתה בטוח שאתה רוצה לצאת?", "יציאה מהתוכנית",
+                JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (confirmed == JOptionPane.YES_OPTION) {
+            return JOptionPane.YES_OPTION;
+        } else {
+            return JOptionPane.CANCEL_OPTION;
+        }
+
+    }
 }

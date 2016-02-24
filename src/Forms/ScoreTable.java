@@ -5,6 +5,7 @@
  */
 package Forms;
 
+import Resources.LocalizationUtil;
 import Users.User;
 import blackjack.DB;
 import blackjack.DBUtils;
@@ -169,13 +170,18 @@ public class ScoreTable extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-                int confirmed = JOptionPane.showConfirmDialog(null, 
+        int confirmed;
+//        if(this.language.equals("iw"))
+//        {
+//            confirmed = LocalizationUtil.exitDialog();
+//        }
+//        else{
+        confirmed = JOptionPane.showConfirmDialog(null, 
         "Are you sure you want to exit the program?", "Exit Program",
         JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
-
+//        }
     if (confirmed == JOptionPane.YES_OPTION) {
-      this.dispose();
-        previous.setVisible(true);
+      System.exit(0);
     }
     }//GEN-LAST:event_formWindowClosing
 
