@@ -6,6 +6,7 @@ import blackjack.DB;
 import blackjack.DB;
 import Forms.Game;
 import Resources.LocalizationUtil;
+import Resources.Sound;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.io.IOException;
