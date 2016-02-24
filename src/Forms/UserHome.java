@@ -102,6 +102,8 @@ public class UserHome extends javax.swing.JFrame {
         mnuItmRemoveAccount = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
+        setSize(new java.awt.Dimension(700, 380));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -111,30 +113,32 @@ public class UserHome extends javax.swing.JFrame {
 
         btnPlay.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnPlay.setText("Play Blackjack");
+        btnPlay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPlay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlayActionPerformed(evt);
             }
         });
         getContentPane().add(btnPlay);
-        btnPlay.setBounds(20, 100, 200, 25);
+        btnPlay.setBounds(20, 130, 200, 30);
 
         btnScoreTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnScoreTable.setText("Show Score Table");
+        btnScoreTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnScoreTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnScoreTableActionPerformed(evt);
             }
         });
         getContentPane().add(btnScoreTable);
-        btnScoreTable.setBounds(20, 150, 200, 30);
+        btnScoreTable.setBounds(20, 180, 200, 30);
 
         labWelcomeUser.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labWelcomeUser.setForeground(new java.awt.Color(255, 255, 255));
         labWelcomeUser.setText("Welcome ");
         labWelcomeUser.setToolTipText("");
         getContentPane().add(labWelcomeUser);
-        labWelcomeUser.setBounds(20, 30, 290, 30);
+        labWelcomeUser.setBounds(50, 50, 290, 30);
 
         labBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/back.png"))); // NOI18N
         labBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -184,7 +188,7 @@ public class UserHome extends javax.swing.JFrame {
 
         setJMenuBar(menuBar);
 
-        setSize(new java.awt.Dimension(689, 420));
+        setSize(new java.awt.Dimension(656, 425));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

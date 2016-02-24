@@ -29,6 +29,36 @@ import sun.audio.AudioStream;
  * @author IBM
  */
 public class GameUtil {
+    public static void WinPot()
+    {
+             AudioInputStream audioInputStream = null;
+
+        Clip clip = null;
+        try {
+            clip = AudioSystem.getClip();
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(GameUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            audioInputStream = AudioSystem.getAudioInputStream(
+                    new File("./src/audio/slot_machine.wav"));
+        } catch (UnsupportedAudioFileException ex) {
+            Logger.getLogger(GameUtil.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(GameUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            clip.open(audioInputStream);
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(GameUtil.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(GameUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        FloatControl gainControl
+                = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        gainControl.setValue(+ 6.0206f); // Reduce volume by 10 decibels.
+        clip.start();
+    }
     
     public static void playShuffle()
     {
@@ -79,6 +109,8 @@ public class GameUtil {
         gainControl.setValue(+ 6.0206f); // Reduce volume by 10 decibels.
         clip.start();
     }
+    
+    
     
     public static void setIcon(JFrame frame)
     {

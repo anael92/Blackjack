@@ -267,7 +267,7 @@ public class SignUpScreen extends javax.swing.JFrame {
         labValidPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         labValidPassword.setText("*");
         getContentPane().add(labValidPassword);
-        labValidPassword.setBounds(120, 340, 280, 15);
+        labValidPassword.setBounds(120, 340, 300, 15);
 
         labBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/signupback_1.png"))); // NOI18N
         getContentPane().add(labBackground);

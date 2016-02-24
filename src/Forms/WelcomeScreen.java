@@ -95,6 +95,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(620, 418));
         setResizable(false);
+        setSize(new java.awt.Dimension(620, 418));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -108,7 +109,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
         getContentPane().add(labPassword);
         labPassword.setBounds(10, 120, 90, 20);
 
-        txtUserName.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        txtUserName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtUserName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUserName.setText("Enter your user name here");
         txtUserName.setName("txtUserName"); // NOI18N
@@ -199,13 +200,12 @@ public class WelcomeScreen extends javax.swing.JFrame {
         getContentPane().add(btnEnglish);
         btnEnglish.setBounds(60, 340, 50, 50);
 
-        txtPassword.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        txtPassword.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPassword.setText("*****");
+        txtPassword.setText("*************");
         txtPassword.setToolTipText("");
         txtPassword.setName("txtPassword"); // NOI18N
         txtPassword.setPreferredSize(new java.awt.Dimension(140, 23));
-        txtPassword.setScrollOffset(0);
         txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtPasswordMouseClicked(evt);
