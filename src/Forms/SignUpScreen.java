@@ -30,6 +30,7 @@ public class SignUpScreen extends javax.swing.JFrame {
     public SignUpScreen() {
 
         initComponents();
+        initMyComponents();
     }
     
     public SignUpScreen(WelcomeScreen previous) {
@@ -45,6 +46,19 @@ public class SignUpScreen extends javax.swing.JFrame {
           changeToHebrew();
         }
     }
+    
+    private void initMyComponents()
+    {
+        rdbFemale.setOpaque(false);
+        rdbFemale.setContentAreaFilled(false);
+        rdbFemale.setBorderPainted(false);
+        
+        rdbMale.setOpaque(false);
+        rdbMale.setContentAreaFilled(false);
+        rdbMale.setBorderPainted(false);
+        
+    }
+    
     
     public final void changeToHebrew()
     {
@@ -115,6 +129,7 @@ public class SignUpScreen extends javax.swing.JFrame {
         labBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -122,42 +137,41 @@ public class SignUpScreen extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        labTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        labTitle.setForeground(new java.awt.Color(51, 51, 51));
+        labTitle.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         labTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labTitle.setText("Sign Up");
         getContentPane().add(labTitle);
-        labTitle.setBounds(110, 70, 180, 40);
+        labTitle.setBounds(100, 50, 240, 70);
 
         labLastName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labLastName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labLastName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         labLastName.setText("Last Name:");
         getContentPane().add(labLastName);
-        labLastName.setBounds(80, 170, 90, 17);
+        labLastName.setBounds(110, 190, 90, 17);
 
         labFirstName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labFirstName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labFirstName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         labFirstName.setText("First Name:");
         getContentPane().add(labFirstName);
-        labFirstName.setBounds(80, 130, 90, 17);
+        labFirstName.setBounds(110, 150, 90, 17);
 
         labGender.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labGender.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labGender.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         labGender.setText("Gender:");
         getContentPane().add(labGender);
-        labGender.setBounds(90, 210, 70, 17);
+        labGender.setBounds(110, 230, 70, 17);
 
         labUserName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labUserName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labUserName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         labUserName.setText("User Name:");
         getContentPane().add(labUserName);
-        labUserName.setBounds(80, 250, 90, 17);
+        labUserName.setBounds(110, 270, 90, 17);
 
         labPassword.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labPassword.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         labPassword.setText("Password:");
         getContentPane().add(labPassword);
-        labPassword.setBounds(90, 290, 80, 17);
+        labPassword.setBounds(110, 310, 80, 17);
 
         txtFirstName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -165,7 +179,7 @@ public class SignUpScreen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtFirstName);
-        txtFirstName.setBounds(180, 130, 110, 20);
+        txtFirstName.setBounds(210, 150, 110, 20);
 
         txtLastName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -173,7 +187,7 @@ public class SignUpScreen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtLastName);
-        txtLastName.setBounds(180, 170, 110, 20);
+        txtLastName.setBounds(210, 190, 110, 20);
 
         txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -181,7 +195,7 @@ public class SignUpScreen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtUserName);
-        txtUserName.setBounds(180, 250, 110, 20);
+        txtUserName.setBounds(210, 270, 110, 20);
 
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -189,19 +203,19 @@ public class SignUpScreen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(180, 290, 110, 20);
+        txtPassword.setBounds(210, 310, 110, 20);
 
         btnGroupGender.add(rdbFemale);
         rdbFemale.setText("Female");
         rdbFemale.setHideActionText(true);
         rdbFemale.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         getContentPane().add(rdbFemale);
-        rdbFemale.setBounds(170, 210, 59, 23);
+        rdbFemale.setBounds(200, 230, 70, 23);
 
         btnGroupGender.add(rdbMale);
         rdbMale.setText("Male");
         getContentPane().add(rdbMale);
-        rdbMale.setBounds(240, 210, 60, 23);
+        rdbMale.setBounds(280, 230, 60, 23);
 
         btnSignUp.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnSignUp.setText("Sign Up");
@@ -211,27 +225,27 @@ public class SignUpScreen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSignUp);
-        btnSignUp.setBounds(130, 380, 170, 40);
+        btnSignUp.setBounds(140, 370, 170, 40);
 
         labSignture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/signature.png"))); // NOI18N
         getContentPane().add(labSignture);
-        labSignture.setBounds(430, 10, 64, 64);
+        labSignture.setBounds(360, 10, 64, 70);
 
         labValidFirstName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         labValidFirstName.setText("*");
         labValidFirstName.setMinimumSize(new java.awt.Dimension(7, 60));
         getContentPane().add(labValidFirstName);
-        labValidFirstName.setBounds(120, 150, 200, 15);
+        labValidFirstName.setBounds(110, 170, 280, 15);
 
         labValidLastName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         labValidLastName.setText("*");
         getContentPane().add(labValidLastName);
-        labValidLastName.setBounds(110, 190, 200, 15);
+        labValidLastName.setBounds(110, 210, 280, 15);
 
         labValidUserName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         labValidUserName.setText("*");
         getContentPane().add(labValidUserName);
-        labValidUserName.setBounds(110, 270, 200, 15);
+        labValidUserName.setBounds(110, 290, 280, 15);
 
         labBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/back2.png"))); // NOI18N
         labBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -246,13 +260,13 @@ public class SignUpScreen extends javax.swing.JFrame {
         labValidPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         labValidPassword.setText("*");
         getContentPane().add(labValidPassword);
-        labValidPassword.setBounds(110, 320, 200, 15);
+        labValidPassword.setBounds(110, 330, 280, 15);
 
-        labBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ACE.jpg"))); // NOI18N
+        labBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/signupback_1.png"))); // NOI18N
         getContentPane().add(labBackground);
-        labBackground.setBounds(0, 0, 500, 530);
+        labBackground.setBounds(0, 0, 440, 540);
 
-        setSize(new java.awt.Dimension(516, 568));
+        setSize(new java.awt.Dimension(445, 565));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
