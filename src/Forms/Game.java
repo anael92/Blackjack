@@ -1,6 +1,7 @@
 package Forms;
 
 
+import Resources.Sound;
 import Users.User;
 import blackjack.BoardPanel;
 import blackjack.Card;
@@ -289,6 +290,7 @@ import javax.swing.Timer;
 			doubleDownButton.setEnabled(false);
 			splitButton.setEnabled(false);
 			
+                        Sound.playShuffle();
 			dealCard(currentHand);
 			dealCard(dealerHand);
 			dealCard(currentHand);
@@ -316,6 +318,7 @@ import javax.swing.Timer;
 				splitButton.setEnabled(true);
 			else
 				splitButton.setEnabled(false);
+                        
 			
 			break;
 		case RESOLVE:
@@ -488,6 +491,7 @@ import javax.swing.Timer;
 			// or blackjack, if not, allow the player to keep hitting
 			// otherwise, go to DEALER_AI state or next hand.
 			//
+                        Sound.playShuffle();
 			dealCard(currentHand);
 			if(!currentHand.isBust() && !currentHand.isBlackjack())
 				updateState(GameState.HITTING);
