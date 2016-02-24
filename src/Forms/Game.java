@@ -473,17 +473,7 @@ import javax.swing.Timer;
                                     systemMessage.setText("ניצחת!!!");
                                 else  
 				systemMessage.setText("You win this hand!");
-                                WinPopup winPopup = new WinPopup();
-                                winPopup.setVisible(true);
-                            new java.util.Timer().schedule(
-                                    new java.util.TimerTask() {
-                                @Override
-                                public void run() {
-                                   winPopup.setVisible(false); 
-                                }
-                            },
-                                    7000
-                            );
+                                new WiningPopup().showWin();
                                 
 				playerCash += hand.getBet() * 2; // Give bet back and winnings.
 				

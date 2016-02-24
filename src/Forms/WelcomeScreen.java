@@ -261,11 +261,17 @@ public class WelcomeScreen extends javax.swing.JFrame {
             }
             adminHome.setVisible(true);
         }
+        }
         else{
+              if (this.language.equals("iw"))
+            {
+                JOptionPane.showMessageDialog(null, "משתמש לא קיים!", "שגיאה", JOptionPane.INFORMATION_MESSAGE);   
+            }
+              else
            JOptionPane.showMessageDialog(null, "User doesn't exist", "Error", JOptionPane.INFORMATION_MESSAGE);   
          clearComponents();
         }
-        }
+        
     }//GEN-LAST:event_btnLoginMouseClicked
 
     private void clearComponents() {
