@@ -202,7 +202,6 @@ public class DB {
          Class.forName(DBUtils.DbDriverClass);
          connection = DriverManager.getConnection(
                  DBUtils.DbUrl, DBUtils.DbUser, DBUtils.DbPassword );
-             System.out.println("Open connection");
          }catch(Exception e)
          {
              System.out.println(e.getMessage());
@@ -216,7 +215,6 @@ public class DB {
      try{
      if (statement!= null)
      statement.close();
-     System.out.println("close connection");
      }catch(SQLException e)
      {
          System.out.println("statement couldnt close");
