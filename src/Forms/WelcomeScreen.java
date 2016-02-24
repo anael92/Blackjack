@@ -4,7 +4,7 @@ package Forms;
 import Users.User;
 import blackjack.DB;
 import blackjack.DB;
-import Forms.GameORG;
+import Forms.Game;
 import Resources.LocalizationUtil;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -283,8 +283,8 @@ public class WelcomeScreen extends javax.swing.JFrame {
     }
     
     private void btnGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuestActionPerformed
-        GameORG game;
-          game = new GameORG();
+        Game game;
+          game = new Game();
             game.initializeGUI();
            this.initComponents();
         this.setVisible(false);

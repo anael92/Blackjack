@@ -199,7 +199,7 @@ public JMenuBar getMenu()
 
     private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
         this.setVisible(false);  
-        GameORG game = new GameORG(player,this);
+        Game game = new Game(player,this);
         game.initializeGUI();
     }//GEN-LAST:event_btnPlayActionPerformed
 

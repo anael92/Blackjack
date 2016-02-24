@@ -37,7 +37,7 @@ import javax.swing.Timer;
  *
  * @author IBM
  */
-    public class GameORG implements ActionListener {
+    public class Game implements ActionListener {
 	
 	//
 	// GUI Components
@@ -98,19 +98,19 @@ import javax.swing.Timer;
 	 * @throws IOException 
 	 */
                 
-	public GameORG() {
+	public Game() {
 		deck = new Deck();
 		playerHands.add(new Hand()); // Default Hand.              
 	}
         
         
-	public GameORG(UserHome prev) {
+	public Game(UserHome prev) {
                 this();
                 previous = prev;
                         
 	}
         
-        	public GameORG(User u,UserHome w)  {
+        	public Game(User u,UserHome w)  {
                     this(w);
                     this.playerId = u.getId();
                     this.playerCash = u.getBalance();
