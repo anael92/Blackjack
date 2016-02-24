@@ -7,6 +7,7 @@ import blackjack.DB;
 import Forms.GameORG;
 import Resources.LocalizationUtil;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,9 @@ public class WelcomeScreen extends javax.swing.JFrame {
           } catch (Exception ex) {
               ex.printStackTrace();
           }
-          initMyComponents();
+        initMyComponents();
+        
+        
     }
     
     public void initMyComponents()
@@ -62,10 +65,6 @@ public class WelcomeScreen extends javax.swing.JFrame {
         btnEnglish.setBorderPainted(false);
         btnEnglish.setActionCommand("en");
         
-       this.setResizable(false);
-        
-        
-  
        
     }
 
@@ -91,6 +90,9 @@ public class WelcomeScreen extends javax.swing.JFrame {
         labBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setMaximumSize(null);
+        setPreferredSize(new java.awt.Dimension(620, 418));
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -104,7 +106,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
         getContentPane().add(labPassword);
         labPassword.setBounds(10, 120, 90, 20);
 
-        txtUserName.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        txtUserName.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         txtUserName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUserName.setText("Enter your user name here");
         txtUserName.setName("txtUserName"); // NOI18N
@@ -117,7 +119,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
         txtUserName.setBounds(100, 80, 160, 25);
         txtUserName.getAccessibleContext().setAccessibleName("txtUserName");
 
-        txtPassword.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        txtPassword.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPassword.setText("Enter your password here");
         txtPassword.setName("txtPassword"); // NOI18N
@@ -132,7 +134,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
         txtPassword.getAccessibleContext().setAccessibleName("txtPassword");
         txtPassword.getAccessibleContext().setAccessibleDescription("");
 
-        btnSignUp.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        btnSignUp.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnSignUp.setText("Sign Up");
         btnSignUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSignUp.setName("btnSignUp"); // NOI18N
@@ -145,7 +147,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
         btnSignUp.setBounds(180, 160, 80, 30);
         btnSignUp.getAccessibleContext().setAccessibleName("btnSignUp");
 
-        btnLogin.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        btnLogin.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnLogin.setText("Login");
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogin.setMaximumSize(new java.awt.Dimension(73, 25));
@@ -166,7 +168,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
         getContentPane().add(labBlackjack);
         labBlackjack.setBounds(40, 10, 280, 50);
 
-        btnGuest.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        btnGuest.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnGuest.setText("Play as a Guest");
         btnGuest.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuest.setMaximumSize(new java.awt.Dimension(57, 23));
@@ -210,14 +212,17 @@ public class WelcomeScreen extends javax.swing.JFrame {
         getContentPane().add(btnEnglish);
         btnEnglish.setBounds(60, 340, 50, 50);
 
-        labBackground.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
+        labBackground.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         labBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/PokerChips.jpg"))); // NOI18N
+        labBackground.setMaximumSize(null);
+        labBackground.setMinimumSize(null);
         labBackground.setName("labBackground"); // NOI18N
+        labBackground.setPreferredSize(new java.awt.Dimension(620, 390));
         getContentPane().add(labBackground);
-        labBackground.setBounds(0, 0, 620, 387);
+        labBackground.setBounds(0, 0, 620, 390);
         labBackground.getAccessibleContext().setAccessibleName("labBackground");
 
-        setSize(new java.awt.Dimension(636, 425));
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -338,6 +343,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
         labPassword.setFont(new java.awt.Font("Arial", 1, 13));
         labBlackjack.setFont(new java.awt.Font("Arial", 1, 36));
         LocalizationUtil.changeOptionPane();
+        
     }
     
         public void initEnglish()
