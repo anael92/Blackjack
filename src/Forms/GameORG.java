@@ -233,7 +233,10 @@ import javax.swing.Timer;
                         DB db = DB.getInstance();
                         db.updateUser(playerId, playerWins, playerCash); 
                         frame.dispose();
+                        if (previous!= null)
+                        {
                         previous.setVisible(true);
+                        }
                     }
                     
                 });

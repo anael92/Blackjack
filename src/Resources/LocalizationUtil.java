@@ -5,6 +5,7 @@
  */
 package Resources;
 
+import java.awt.Color;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
@@ -55,19 +56,35 @@ public class LocalizationUtil {
           return localizedResourceBundle;
      }
      
-         public static void changeOptionPane()
+      public static ResourceBundle getBundleScoreTableIW()
+     {
+          localizedResourceBundle = ResourceBundle.getBundle("Resources.UiScoreTable_iw", new Locale("iw"));
+          return localizedResourceBundle;
+     }
+     
+         public static void changeOptionPane_iw()
      {      
         ResourceBundle bundle = ResourceBundle.getBundle("Resources.JOptionPane_iw", new Locale("iw"));
-
+//        UIManager.put("OptionPane.background", Color.PINK);
+//        UIManager.put("Panel.background", Color.white);
         UIManager.put("OptionPane.yesButtonText", bundle.getString("Yes"));
         UIManager.put("OptionPane.noButtonText", bundle.getString("No"));
         UIManager.put("OptionPane.cancelButtonText", bundle.getString("Cancel"));
         UIManager.put("OptionPane.okButtonText", bundle.getString("Ok"));
      }
+         
+      public static void changeOptionPane_en()
+     {      
+        ResourceBundle bundle = ResourceBundle.getBundle("Resources.JOptionPane_iw", new Locale("iw"));
+        UIManager.put("OptionPane.yesButtonText", "Yes");
+        UIManager.put("OptionPane.noButtonText", "No");
+        UIManager.put("OptionPane.cancelButtonText", "Cancel");
+        UIManager.put("OptionPane.okButtonText", "Ok");
+     }
     public static boolean changePaswword_iw(Object[] message)
     {
 
-        changeOptionPane();
+        changeOptionPane_iw();
         message[0] = "סיסמא קודמת";
         message[2] = "סיסמא חדשה";
         int option = JOptionPane.showConfirmDialog(null, message, "שינוי סיסמא",

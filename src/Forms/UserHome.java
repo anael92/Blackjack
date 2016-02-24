@@ -64,7 +64,7 @@ public class UserHome extends javax.swing.JFrame {
         {
           LocalizationUtil.localizedResourceBundle = ResourceBundle.getBundle("Resources.UiHome_iw", new Locale("iw"));
           updateCaptions();
-          LocalizationUtil.changeOptionPane();
+          LocalizationUtil.changeOptionPane_iw();
         }
     
        public void updateCaptions()
@@ -205,7 +205,14 @@ public JMenuBar getMenu()
 
     private void btnScoreTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScoreTableActionPerformed
         this.setVisible(false);  
-        ScoreTable scoreTable = new ScoreTable(this,player);
+        ScoreTable scoreTable;
+        if (this.language.equals("iw"))
+        {
+            scoreTable = new ScoreTable(this,player,this.language);
+        }
+        else{
+         scoreTable = new ScoreTable(this,player);
+        }
         scoreTable.setVisible(true);
     }//GEN-LAST:event_btnScoreTableActionPerformed
 

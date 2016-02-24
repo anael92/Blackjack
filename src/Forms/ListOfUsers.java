@@ -46,7 +46,7 @@ public class ListOfUsers extends javax.swing.JFrame {
         initTable();
         if (lang.equals("iw"))
         {
-            LocalizationUtil.changeOptionPane();
+            LocalizationUtil.changeOptionPane_iw();
             this.language = lang;
             LocalizationUtil.localizedResourceBundle = LocalizationUtil.getBundleListOfUsersIW();
             updateCaption();

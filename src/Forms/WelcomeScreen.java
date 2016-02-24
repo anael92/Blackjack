@@ -342,7 +342,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
         labPassword.setBounds(270, 120, 40, 20);
         labPassword.setFont(new java.awt.Font("Arial", 1, 13));
         labBlackjack.setFont(new java.awt.Font("Arial", 1, 36));
-        LocalizationUtil.changeOptionPane();
+        LocalizationUtil.changeOptionPane_iw();
         
     }
     
@@ -353,6 +353,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
         labPassword.setBounds(10, 120, 90, 20);
         labPassword.setFont(new java.awt.Font("Aharoni", 0, 14)); 
         labBlackjack.setFont(new java.awt.Font("Arial Black", 0, 36));
+        LocalizationUtil.changeOptionPane_en();
     }
     
    public void updateCaptions()
