@@ -70,6 +70,8 @@ public class ListOfUsers extends javax.swing.JFrame {
 
     private void initTable()
     {
+         this.getContentPane().setBackground(Color.BLACK);
+       
          GameUtil.setIcon(this);
         DB db = DB.getInstance();
         String sql = "SELECT ID,FIRSTNAME,LASTNAME,GENDER,USERNAME FROM APP.USERS";
@@ -149,6 +151,7 @@ public class ListOfUsers extends javax.swing.JFrame {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         usersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -176,6 +179,9 @@ public class ListOfUsers extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(usersTable);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(0, 51, 527, 402);
+
         btnChangePermission.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnChangePermission.setText("Change Permission");
         btnChangePermission.addActionListener(new java.awt.event.ActionListener() {
@@ -183,6 +189,8 @@ public class ListOfUsers extends javax.swing.JFrame {
                 btnChangePermissionActionPerformed(evt);
             }
         });
+        getContentPane().add(btnChangePermission);
+        btnChangePermission.setBounds(260, 10, 163, 33);
 
         btnRemoveUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnRemoveUser.setText("Remove User");
@@ -191,6 +199,8 @@ public class ListOfUsers extends javax.swing.JFrame {
                 btnRemoveUserActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRemoveUser);
+        btnRemoveUser.setBounds(100, 10, 123, 33);
 
         labBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/specialBack.png"))); // NOI18N
         labBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -199,31 +209,8 @@ public class ListOfUsers extends javax.swing.JFrame {
                 labBackMouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(btnRemoveUser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(btnChangePermission)
-                .addGap(46, 46, 46)
-                .addComponent(labBack))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnRemoveUser, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnChangePermission, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(labBack))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        getContentPane().add(labBack);
+        labBack.setBounds(485, 0, 32, 32);
 
         setSize(new java.awt.Dimension(543, 549));
         setLocationRelativeTo(null);

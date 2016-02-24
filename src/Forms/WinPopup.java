@@ -6,6 +6,7 @@
 package Forms;
 
 import Resources.GameUtil;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -19,8 +20,23 @@ public class WinPopup extends javax.swing.JFrame {
     public WinPopup() {
         initComponents();
         GameUtil.WinPot();
+        this.setResizable(false);
+        String file = "./src/img/card-symbols_bsmall.png";
+                ImageIcon img = new ImageIcon(file);
+                 this.setIconImage(img.getImage());
+      hideWin();
     }
     
+    public void hideWin()
+    {
+        labWin1.setVisible(false);
+        labWin2.setVisible(false);
+        labWin3.setVisible(false);
+        labWin4.setVisible(false);
+        labWin5.setVisible(false);
+        labWin6.setVisible(false);
+        labWin7.setVisible(false);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,44 +47,59 @@ public class WinPopup extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        labWin1 = new javax.swing.JLabel();
+        labWin2 = new javax.swing.JLabel();
+        labWin6 = new javax.swing.JLabel();
+        labWin3 = new javax.swing.JLabel();
+        labWin4 = new javax.swing.JLabel();
+        labWin5 = new javax.swing.JLabel();
+        labWin7 = new javax.swing.JLabel();
+        labWin8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 700));
+        getContentPane().setLayout(null);
+
+        labWin1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/win1.png"))); // NOI18N
+        getContentPane().add(labWin1);
+        labWin1.setBounds(0, 230, 280, 50);
+
+        labWin2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/win2.png"))); // NOI18N
+        getContentPane().add(labWin2);
+        labWin2.setBounds(10, 180, 290, 60);
+
+        labWin6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/win6.png"))); // NOI18N
+        getContentPane().add(labWin6);
+        labWin6.setBounds(200, 0, 310, 70);
+
+        labWin3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/win3.png"))); // NOI18N
+        getContentPane().add(labWin3);
+        labWin3.setBounds(20, 100, 330, 60);
+
+        labWin4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/win4.png"))); // NOI18N
+        getContentPane().add(labWin4);
+        labWin4.setBounds(20, 50, 290, 50);
+
+        labWin5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/win5.png"))); // NOI18N
+        getContentPane().add(labWin5);
+        labWin5.setBounds(20, -10, 320, 100);
+
+        labWin7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/win7.png"))); // NOI18N
+        getContentPane().add(labWin7);
+        labWin7.setBounds(200, 130, 300, 50);
+
+        labWin8.setFont(new java.awt.Font("Meiryo UI", 1, 48)); // NOI18N
+        labWin8.setText("YOU WIN!");
+        getContentPane().add(labWin8);
+        labWin8.setBounds(220, 210, 300, 90);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/giphy.gif"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 490, 301);
 
-        jLabel8.setFont(new java.awt.Font("Young Heart", 1, 48)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(51, 153, 255));
-        jLabel8.setText("YOU WIN!!!!");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(2292, 2292, 2292))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(294, 294, 294)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel8)
-                .addContainerGap(228, Short.MAX_VALUE))
-        );
-
-        pack();
+        setSize(new java.awt.Dimension(505, 338));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -108,6 +139,13 @@ public class WinPopup extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel labWin1;
+    private javax.swing.JLabel labWin2;
+    private javax.swing.JLabel labWin3;
+    private javax.swing.JLabel labWin4;
+    private javax.swing.JLabel labWin5;
+    private javax.swing.JLabel labWin6;
+    private javax.swing.JLabel labWin7;
+    private javax.swing.JLabel labWin8;
     // End of variables declaration//GEN-END:variables
 }
