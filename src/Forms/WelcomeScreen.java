@@ -6,7 +6,7 @@ import blackjack.DB;
 import blackjack.DB;
 import Forms.Game;
 import Resources.LocalizationUtil;
-import Resources.Sound;
+import Resources.GameUtil;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.io.IOException;
@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javax.swing.GroupLayout.Alignment.CENTER;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -66,7 +67,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
         btnEnglish.setBorderPainted(false);
         btnEnglish.setActionCommand("en");
         
-       
+       GameUtil.setIcon(this);
     }
 
     /**
@@ -80,7 +81,6 @@ public class WelcomeScreen extends javax.swing.JFrame {
 
         labPassword = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
         btnSignUp = new javax.swing.JButton();
         btnLogin = new javax.swing.JButton();
         labBlackjack = new javax.swing.JLabel();
@@ -88,6 +88,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
         labUserName = new javax.swing.JLabel();
         btnHebrew = new javax.swing.JButton();
         btnEnglish = new javax.swing.JButton();
+        txtPassword = new javax.swing.JPasswordField();
         labBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -119,21 +120,6 @@ public class WelcomeScreen extends javax.swing.JFrame {
         getContentPane().add(txtUserName);
         txtUserName.setBounds(100, 80, 160, 25);
         txtUserName.getAccessibleContext().setAccessibleName("txtUserName");
-
-        txtPassword.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPassword.setText("Enter your password here");
-        txtPassword.setName("txtPassword"); // NOI18N
-        txtPassword.setPreferredSize(new java.awt.Dimension(140, 23));
-        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtPasswordMouseClicked(evt);
-            }
-        });
-        getContentPane().add(txtPassword);
-        txtPassword.setBounds(100, 120, 160, 25);
-        txtPassword.getAccessibleContext().setAccessibleName("txtPassword");
-        txtPassword.getAccessibleContext().setAccessibleDescription("");
 
         btnSignUp.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnSignUp.setText("Sign Up");
@@ -213,6 +199,21 @@ public class WelcomeScreen extends javax.swing.JFrame {
         getContentPane().add(btnEnglish);
         btnEnglish.setBounds(60, 340, 50, 50);
 
+        txtPassword.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPassword.setText("*****");
+        txtPassword.setToolTipText("");
+        txtPassword.setName("txtPassword"); // NOI18N
+        txtPassword.setPreferredSize(new java.awt.Dimension(140, 23));
+        txtPassword.setScrollOffset(0);
+        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPasswordMouseClicked(evt);
+            }
+        });
+        getContentPane().add(txtPassword);
+        txtPassword.setBounds(100, 120, 160, 25);
+
         labBackground.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         labBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/PokerChips.jpg"))); // NOI18N
         labBackground.setMaximumSize(null);
@@ -230,10 +231,6 @@ public class WelcomeScreen extends javax.swing.JFrame {
     private void txtUserNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserNameMouseClicked
         txtUserName.setText("");
     }//GEN-LAST:event_txtUserNameMouseClicked
-
-    private void txtPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMouseClicked
-        txtPassword.setText("");
-    }//GEN-LAST:event_txtPasswordMouseClicked
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         String userName = txtUserName.getText().toString();
@@ -274,13 +271,9 @@ public class WelcomeScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginMouseClicked
 
     private void clearComponents() {
-        Component[] components = this.getContentPane().getComponents();
-        for (Component component : components) {
-            if (component instanceof JTextField || component instanceof JTextArea) {
-                JTextComponent specificObject = (JTextComponent) component;
-                specificObject.setText("");
-            }
-        }
+        
+        txtUserName.setText("");
+        txtPassword.setText("");
     }
     
     private void btnGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuestActionPerformed
@@ -336,6 +329,10 @@ public class WelcomeScreen extends javax.swing.JFrame {
         initHebrew();
         language = "iw";
     }//GEN-LAST:event_btnHebrewActionPerformed
+
+    private void txtPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMouseClicked
+        txtPassword.setText("");
+    }//GEN-LAST:event_txtPasswordMouseClicked
 
     public void initHebrew()
     {
@@ -418,7 +415,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
     private javax.swing.JLabel labBlackjack;
     private javax.swing.JLabel labPassword;
     private javax.swing.JLabel labUserName;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }

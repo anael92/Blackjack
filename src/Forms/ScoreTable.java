@@ -5,6 +5,7 @@
  */
 package Forms;
 
+import Resources.GameUtil;
 import Resources.LocalizationUtil;
 import Users.User;
 import blackjack.DB;
@@ -75,6 +76,7 @@ public class ScoreTable extends javax.swing.JFrame {
     
     private void initTable()
     {
+         GameUtil.setIcon(this);
         DB db = DB.getInstance();
         String sql = "SELECT * FROM APP.SCORE";
        try{
