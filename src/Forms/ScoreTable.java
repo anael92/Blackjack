@@ -132,8 +132,10 @@ public class ScoreTable extends javax.swing.JFrame {
        }
         
        scoreTable.setEnabled(false);
-       scoreTable.setBackground(new java.awt.Color(204, 204, 255));
+   //    scoreTable.setBackground(new java.awt.Color(204, 204, 255));
        scoreTable.getTableHeader().setReorderingAllowed(false);
+       this.getContentPane().setBackground(Color.BLACK);
+       scoreTable.setBackground(new java.awt.Color(204, 204, 255));
 
     }
 
@@ -152,12 +154,14 @@ public class ScoreTable extends javax.swing.JFrame {
         labHighScore = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setForeground(java.awt.Color.black);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
 
+        scoreTable.setBackground(new java.awt.Color(51, 204, 255));
         scoreTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -181,6 +185,7 @@ public class ScoreTable extends javax.swing.JFrame {
         });
 
         labHighScore.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        labHighScore.setForeground(new java.awt.Color(255, 255, 255));
         labHighScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labHighScore.setText("High Score");
         labHighScore.setMaximumSize(new java.awt.Dimension(227, 44));
