@@ -130,7 +130,8 @@ public class ScoreTable extends javax.swing.JFrame {
        scoreTable.setEnabled(false);
        scoreTable.setBackground(new java.awt.Color(204, 204, 255));
        scoreTable.getTableHeader().setReorderingAllowed(false);
-
+       
+       
     }
 
     /**
@@ -212,18 +213,19 @@ public class ScoreTable extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         int confirmed;
-//        if(this.language.equals("iw"))
-//        {
-//            confirmed = LocalizationUtil.exitDialog();
-//        }
-//        else{
+        if(this.language.equals("iw"))
+        {
+            confirmed = LocalizationUtil.exitDialog();
+        }
+        else{
         confirmed = JOptionPane.showConfirmDialog(null, 
         "Are you sure you want to exit the program?", "Exit Program",
         JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
-//        }
+       }
     if (confirmed == JOptionPane.YES_OPTION) {
       System.exit(0);
     }
+        
     }//GEN-LAST:event_formWindowClosing
 
     private void labBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labBackMouseClicked

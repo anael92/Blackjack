@@ -235,7 +235,6 @@ public class ListOfUsers extends javax.swing.JFrame {
         if (selectedRow != -1)
         {
             usersTable.setSelectionBackground(Color.WHITE);
-           // id = (int) usersTable.getValueAt(selectedRow, 0);
            id = (int) usersTable.getModel().getValueAt(usersTable.getSelectedRow(),0);
             userName = (String) usersTable.getValueAt(selectedRow, 3);
         }
