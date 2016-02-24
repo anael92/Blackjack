@@ -10,6 +10,7 @@ import Users.User;
 import blackjack.DB;
 import blackjack.DBUtils;
 import java.awt.Color;
+import java.awt.Component;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -20,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import org.apache.derby.impl.sql.execute.AggregatorInfoList;
 
@@ -30,6 +33,8 @@ import org.apache.derby.impl.sql.execute.AggregatorInfoList;
 public class ScoreTable extends javax.swing.JFrame {
     UserHome previous = null;
     User player = null;
+    String language = "";
+    DefaultTableModel dtm;
     /**
      * Creates new form ScoreTable
      */
@@ -42,6 +47,30 @@ public class ScoreTable extends javax.swing.JFrame {
             this();
             this.previous = previous;
             this.player = player;
+    }
+        
+        public ScoreTable(UserHome previous,User player,String lang) {
+            initComponents();
+            this.previous = previous;
+            this.player = player;
+            this.language = lang;
+            initTable();
+            if (this.language.equals("iw"))
+            {
+                LocalizationUtil.changeOptionPane_iw();
+                LocalizationUtil.localizedResourceBundle = LocalizationUtil.getBundleScoreTableIW();
+                updateCaption();
+            }
+    }
+        
+    private void updateCaption()
+    {
+         Vector columnsName = new Vector();
+        columnsName.addElement(LocalizationUtil.localizedResourceBundle.getString("UserName"));
+        columnsName.addElement(LocalizationUtil.localizedResourceBundle.getString("Wins"));
+        columnsName.addElement(LocalizationUtil.localizedResourceBundle.getString("Balance"));
+        dtm.setColumnIdentifiers(columnsName);
+        labHighScore.setText(LocalizationUtil.localizedResourceBundle.getString("labHighScore"));
     }
     
     private void initTable()
@@ -57,7 +86,7 @@ public class ScoreTable extends javax.swing.JFrame {
        ResultSet resultSet = stat.executeQuery(sql);
        ResultSetMetaData rsmd = resultSet.getMetaData();
 
-       DefaultTableModel dtm = new DefaultTableModel();
+        dtm = new DefaultTableModel();
        Vector columnsName = new Vector();
 
         columnsName.addElement("User Name");
@@ -103,8 +132,7 @@ public class ScoreTable extends javax.swing.JFrame {
        scoreTable.setEnabled(false);
        scoreTable.setBackground(new java.awt.Color(204, 204, 255));
        scoreTable.getTableHeader().setReorderingAllowed(false);
-       
-        
+
     }
 
     /**
@@ -119,6 +147,7 @@ public class ScoreTable extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         scoreTable = new javax.swing.JTable();
         labBack = new javax.swing.JLabel();
+        labHighScore = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -142,11 +171,19 @@ public class ScoreTable extends javax.swing.JFrame {
         jScrollPane1.setViewportView(scoreTable);
 
         labBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/specialBack.png"))); // NOI18N
+        labBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labBackMouseClicked(evt);
             }
         });
+
+        labHighScore.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        labHighScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labHighScore.setText("High Score");
+        labHighScore.setMaximumSize(new java.awt.Dimension(227, 44));
+        labHighScore.setMinimumSize(new java.awt.Dimension(227, 44));
+        labHighScore.setPreferredSize(new java.awt.Dimension(227, 44));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,13 +191,19 @@ public class ScoreTable extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labHighScore, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
                 .addComponent(labBack, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(labBack, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labHighScore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(labBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -228,6 +271,7 @@ public class ScoreTable extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labBack;
+    private javax.swing.JLabel labHighScore;
     private javax.swing.JTable scoreTable;
     // End of variables declaration//GEN-END:variables
 }
