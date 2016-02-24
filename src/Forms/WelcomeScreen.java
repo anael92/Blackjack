@@ -92,10 +92,8 @@ public class WelcomeScreen extends javax.swing.JFrame {
         labBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(620, 418));
         setResizable(false);
-        setSize(new java.awt.Dimension(620, 418));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);

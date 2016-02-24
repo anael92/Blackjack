@@ -37,19 +37,17 @@ public class SignUpScreen extends javax.swing.JFrame {
     public SignUpScreen(WelcomeScreen previous) {
         this();
         this.previous = previous;
-         if (language.equals("iw"))
-        {
-          changeToHebrew();
-          InputValidation.setLocalizedResourceBundle(LocalizationUtil.getBundleInputValidationIW());
-        }
-        else{
-            InputValidation.setLocalizedResourceBundle(LocalizationUtil.getBundleInputValidation());
-        }
+        InputValidation.setLocalizedResourceBundle(LocalizationUtil.getBundleInputValidation());
     }
     
     public SignUpScreen(WelcomeScreen previous,String language) {
         this(previous);
         this.language = language;
+        if (language.equals("iw"))
+        {
+          changeToHebrew();
+          InputValidation.setLocalizedResourceBundle(LocalizationUtil.getBundleInputValidationIW());
+        }
     }
     
     private void initMyComponents()
@@ -93,6 +91,10 @@ public class SignUpScreen extends javax.swing.JFrame {
         txtLastName.setHorizontalAlignment(SwingConstants.RIGHT);
         txtUserName.setHorizontalAlignment(SwingConstants.RIGHT);
         txtPassword.setHorizontalAlignment(SwingConstants.RIGHT);
+        labValidFirstName.setHorizontalAlignment(SwingConstants.CENTER);
+        labValidLastName.setHorizontalAlignment(SwingConstants.CENTER);
+        labValidUserName.setHorizontalAlignment(SwingConstants.CENTER);
+        labValidPassword.setHorizontalAlignment(SwingConstants.CENTER);
 
     }
     
@@ -243,18 +245,23 @@ public class SignUpScreen extends javax.swing.JFrame {
         labSignture.setBounds(360, 10, 64, 70);
 
         labValidFirstName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        labValidFirstName.setText("*");
+        labValidFirstName.setMaximumSize(new java.awt.Dimension(7, 15));
         labValidFirstName.setMinimumSize(new java.awt.Dimension(7, 60));
+        labValidFirstName.setPreferredSize(new java.awt.Dimension(7, 15));
         getContentPane().add(labValidFirstName);
         labValidFirstName.setBounds(120, 180, 280, 15);
 
         labValidLastName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        labValidLastName.setText("*");
+        labValidLastName.setMaximumSize(new java.awt.Dimension(7, 15));
+        labValidLastName.setMinimumSize(new java.awt.Dimension(7, 60));
+        labValidLastName.setPreferredSize(new java.awt.Dimension(7, 15));
         getContentPane().add(labValidLastName);
         labValidLastName.setBounds(120, 220, 280, 15);
 
         labValidUserName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        labValidUserName.setText("*");
+        labValidUserName.setMaximumSize(new java.awt.Dimension(7, 15));
+        labValidUserName.setMinimumSize(new java.awt.Dimension(7, 60));
+        labValidUserName.setPreferredSize(new java.awt.Dimension(7, 15));
         getContentPane().add(labValidUserName);
         labValidUserName.setBounds(120, 300, 280, 15);
 
@@ -269,7 +276,9 @@ public class SignUpScreen extends javax.swing.JFrame {
         labBack.setBounds(10, 450, 64, 64);
 
         labValidPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        labValidPassword.setText("*");
+        labValidPassword.setMaximumSize(new java.awt.Dimension(7, 15));
+        labValidPassword.setMinimumSize(new java.awt.Dimension(7, 60));
+        labValidPassword.setPreferredSize(new java.awt.Dimension(7, 15));
         getContentPane().add(labValidPassword);
         labValidPassword.setBounds(120, 340, 300, 15);
 
