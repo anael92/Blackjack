@@ -5,6 +5,7 @@
  */
 package Forms;
 
+import Resources.GameUtil;
 import Resources.LocalizationUtil;
 import Users.User;
 import java.awt.event.ActionEvent;
@@ -37,6 +38,7 @@ public class UserHome extends javax.swing.JFrame {
      */
     public UserHome() {
         initComponents();
+         GameUtil.setIcon(this);
     }
     
       public UserHome(WelcomeScreen previous) {

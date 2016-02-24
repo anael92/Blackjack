@@ -5,6 +5,7 @@
  */
 package Forms;
 
+import Resources.GameUtil;
 import Resources.LocalizationUtil;
 import Users.RegularUser;
 import java.awt.event.WindowEvent;
@@ -57,6 +58,7 @@ public class SignUpScreen extends javax.swing.JFrame {
         rdbMale.setContentAreaFilled(false);
         rdbMale.setBorderPainted(false);
         
+         GameUtil.setIcon(this);   
     }
     
     

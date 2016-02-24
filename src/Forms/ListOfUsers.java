@@ -5,6 +5,7 @@
  */
 package Forms;
 
+import Resources.GameUtil;
 import Resources.LocalizationUtil;
 import Users.User;
 import blackjack.DB;
@@ -69,6 +70,7 @@ public class ListOfUsers extends javax.swing.JFrame {
 
     private void initTable()
     {
+         GameUtil.setIcon(this);
         DB db = DB.getInstance();
         String sql = "SELECT ID,FIRSTNAME,LASTNAME,GENDER,USERNAME FROM APP.USERS";
        try{

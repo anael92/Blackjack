@@ -1,7 +1,7 @@
 package Forms;
 
 
-import Resources.Sound;
+import Resources.GameUtil;
 import Users.User;
 import blackjack.BoardPanel;
 import blackjack.Card;
@@ -125,7 +125,7 @@ import javax.swing.Timer;
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setPreferredSize(new Dimension(800, 600));
 		frame.setResizable(false);
-                    
+                 GameUtil.setIcon(frame);    
 		//
 		// Initialize Board Panel
 		//
@@ -233,11 +233,16 @@ import javax.swing.Timer;
                     public void windowClosing(WindowEvent e) {
                         DB db = DB.getInstance();
                         db.updateUser(playerId, playerWins, playerCash); 
-                        frame.dispose();
-                        if (previous!= null)
+                          if (previous!= null)
                         {
-                        previous.setVisible(true);
+                            frame.dispose();
+                             previous.setVisible(true);
                         }
+                          else{
+                              System.exit(1);
+                          }
+                          
+                        
                     }
                     
                 });
@@ -290,7 +295,7 @@ import javax.swing.Timer;
 			doubleDownButton.setEnabled(false);
 			splitButton.setEnabled(false);
 			
-                        Sound.playShuffle();
+                        GameUtil.playShuffle();
 			dealCard(currentHand);
 			dealCard(dealerHand);
 			dealCard(currentHand);
@@ -491,7 +496,7 @@ import javax.swing.Timer;
 			// or blackjack, if not, allow the player to keep hitting
 			// otherwise, go to DEALER_AI state or next hand.
 			//
-                        Sound.playShuffle();
+                        GameUtil.playShuffle();
 			dealCard(currentHand);
 			if(!currentHand.isBust() && !currentHand.isBlackjack())
 				updateState(GameState.HITTING);
