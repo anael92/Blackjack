@@ -28,9 +28,13 @@ public class BoardPanel extends JPanel {
 		this.feltImage = new ImageIcon(feltImage).getImage();
 		this.backgroundImage = new ImageIcon(backgroundImage).getImage();
 	}
+        
+        public BoardPanel(String feltImage) {
+		this.feltImage = new ImageIcon(feltImage).getImage();
+	}
 	
 	public void paintComponent(Graphics g) {
 		g.drawImage(feltImage, 0, 0, null);
-		g.drawImage(backgroundImage, 50, 150, null);
+		//g.drawImage(backgroundImage, 50, 150, null);
 	}
 }

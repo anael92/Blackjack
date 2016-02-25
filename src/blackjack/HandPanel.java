@@ -1,12 +1,5 @@
 package blackjack;
 
-/**
-   Name: Dallin Wellington
-   Assignment: Final - Blackjack GUI
-   Course: CSC205
-   Date: May 6th, 2014
-*/
-
 import blackjack.Utils.SUIT;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -26,70 +19,70 @@ public class HandPanel extends JPanel {
 	
 	private List<Hand> targetHands;
 	
-	private static Image cardBackImage = new ImageIcon("data/cards/back.png").getImage();
+	private static Image cardBackImage = new ImageIcon("./src/img/cards/back.png").getImage();
 	
 	private static Image[] spadesImages = {
-		new ImageIcon("data/cards/ace_of_spades.png").getImage(),
-		new ImageIcon("data/cards/2_of_spades.png").getImage(),
-		new ImageIcon("data/cards/3_of_spades.png").getImage(),
-		new ImageIcon("data/cards/4_of_spades.png").getImage(),
-		new ImageIcon("data/cards/5_of_spades.png").getImage(),
-		new ImageIcon("data/cards/6_of_spades.png").getImage(),
-		new ImageIcon("data/cards/7_of_spades.png").getImage(),
-		new ImageIcon("data/cards/8_of_spades.png").getImage(),
-		new ImageIcon("data/cards/9_of_spades.png").getImage(),
-		new ImageIcon("data/cards/10_of_spades.png").getImage(),
-		new ImageIcon("data/cards/jack_of_spades.png").getImage(),
-		new ImageIcon("data/cards/queen_of_spades.png").getImage(),
-		new ImageIcon("data/cards/king_of_spades.png").getImage()
+		new ImageIcon("./src/img/cards/ace_of_spades.png").getImage(),
+		new ImageIcon("./src/img/cards/2_of_spades.png").getImage(),
+		new ImageIcon("./src/img/cards/3_of_spades.png").getImage(),
+		new ImageIcon("./src/img/cards/4_of_spades.png").getImage(),
+		new ImageIcon("./src/img/cards/5_of_spades.png").getImage(),
+		new ImageIcon("./src/img/cards/6_of_spades.png").getImage(),
+		new ImageIcon("./src/img/cards/7_of_spades.png").getImage(),
+		new ImageIcon("./src/img/cards/8_of_spades.png").getImage(),
+		new ImageIcon("./src/img/cards/9_of_spades.png").getImage(),
+		new ImageIcon("./src/img/cards/10_of_spades.png").getImage(),
+		new ImageIcon("./src/img/cards/jack_of_spades.png").getImage(),
+		new ImageIcon("./src/img/cards/queen_of_spades.png").getImage(),
+		new ImageIcon("./src/img/cards/king_of_spades.png").getImage()
 	};
 
 	private static Image[] heartsImages = {
-		new ImageIcon("data/cards/ace_of_hearts.png").getImage(),
-		new ImageIcon("data/cards/2_of_hearts.png").getImage(),
-		new ImageIcon("data/cards/3_of_hearts.png").getImage(),
-		new ImageIcon("data/cards/4_of_hearts.png").getImage(),
-		new ImageIcon("data/cards/5_of_hearts.png").getImage(),
-		new ImageIcon("data/cards/6_of_hearts.png").getImage(),
-		new ImageIcon("data/cards/7_of_hearts.png").getImage(),
-		new ImageIcon("data/cards/8_of_hearts.png").getImage(),
-		new ImageIcon("data/cards/9_of_hearts.png").getImage(),
-		new ImageIcon("data/cards/10_of_hearts.png").getImage(),
-		new ImageIcon("data/cards/jack_of_hearts.png").getImage(),
-		new ImageIcon("data/cards/queen_of_hearts.png").getImage(),
-		new ImageIcon("data/cards/king_of_hearts.png").getImage()
+		new ImageIcon("./src/img/cards/ace_of_hearts.png").getImage(),
+		new ImageIcon("./src/img/cards/2_of_hearts.png").getImage(),
+		new ImageIcon("./src/img/cards/3_of_hearts.png").getImage(),
+		new ImageIcon("./src/img/cards/4_of_hearts.png").getImage(),
+		new ImageIcon("./src/img/cards/5_of_hearts.png").getImage(),
+		new ImageIcon("./src/img/cards/6_of_hearts.png").getImage(),
+		new ImageIcon("./src/img/cards/7_of_hearts.png").getImage(),
+		new ImageIcon("./src/img/cards/8_of_hearts.png").getImage(),
+		new ImageIcon("./src/img/cards/9_of_hearts.png").getImage(),
+		new ImageIcon("./src/img/cards/10_of_hearts.png").getImage(),
+		new ImageIcon("./src/img/cards/jack_of_hearts.png").getImage(),
+		new ImageIcon("./src/img/cards/queen_of_hearts.png").getImage(),
+		new ImageIcon("./src/img/cards/king_of_hearts.png").getImage()
 	};
 	
 	private static Image[] diamondsImages = {
-		new ImageIcon("data/cards/ace_of_diamonds.png").getImage(),
-		new ImageIcon("data/cards/2_of_diamonds.png").getImage(),
-		new ImageIcon("data/cards/3_of_diamonds.png").getImage(),
-		new ImageIcon("data/cards/4_of_diamonds.png").getImage(),
-		new ImageIcon("data/cards/5_of_diamonds.png").getImage(),
-		new ImageIcon("data/cards/6_of_diamonds.png").getImage(),
-		new ImageIcon("data/cards/7_of_diamonds.png").getImage(),
-		new ImageIcon("data/cards/8_of_diamonds.png").getImage(),
-		new ImageIcon("data/cards/9_of_diamonds.png").getImage(),
-		new ImageIcon("data/cards/10_of_diamonds.png").getImage(),
-		new ImageIcon("data/cards/jack_of_diamonds.png").getImage(),
-		new ImageIcon("data/cards/queen_of_diamonds.png").getImage(),
-		new ImageIcon("data/cards/king_of_diamonds.png").getImage()
+		new ImageIcon("./src/img/cards/ace_of_diamonds.png").getImage(),
+		new ImageIcon("./src/img/cards/2_of_diamonds.png").getImage(),
+		new ImageIcon("./src/img/cards/3_of_diamonds.png").getImage(),
+		new ImageIcon("./src/img/cards/4_of_diamonds.png").getImage(),
+		new ImageIcon("./src/img/cards/5_of_diamonds.png").getImage(),
+		new ImageIcon("./src/img/cards/6_of_diamonds.png").getImage(),
+		new ImageIcon("./src/img/cards/7_of_diamonds.png").getImage(),
+		new ImageIcon("./src/img/cards/8_of_diamonds.png").getImage(),
+		new ImageIcon("./src/img/cards/9_of_diamonds.png").getImage(),
+		new ImageIcon("./src/img/cards/10_of_diamonds.png").getImage(),
+		new ImageIcon("./src/img/cards/jack_of_diamonds.png").getImage(),
+		new ImageIcon("./src/img/cards/queen_of_diamonds.png").getImage(),
+		new ImageIcon("./src/img/cards/king_of_diamonds.png").getImage()
 	};
-	
+        
 	private static Image[] clubsImages = {
-		new ImageIcon("data/cards/ace_of_clubs.png").getImage(),
-		new ImageIcon("data/cards/2_of_clubs.png").getImage(),
-		new ImageIcon("data/cards/3_of_clubs.png").getImage(),
-		new ImageIcon("data/cards/4_of_clubs.png").getImage(),
-		new ImageIcon("data/cards/5_of_clubs.png").getImage(),
-		new ImageIcon("data/cards/6_of_clubs.png").getImage(),
-		new ImageIcon("data/cards/7_of_clubs.png").getImage(),
-		new ImageIcon("data/cards/8_of_clubs.png").getImage(),
-		new ImageIcon("data/cards/9_of_clubs.png").getImage(),
-		new ImageIcon("data/cards/10_of_clubs.png").getImage(),
-		new ImageIcon("data/cards/jack_of_clubs.png").getImage(),
-		new ImageIcon("data/cards/queen_of_clubs.png").getImage(),
-		new ImageIcon("data/cards/king_of_clubs.png").getImage()
+		new ImageIcon("./src/img/cards/ace_of_clubs.png").getImage(),
+		new ImageIcon("./src/img/cards/2_of_clubs.png").getImage(),
+		new ImageIcon("./src/img/cards/3_of_clubs.png").getImage(),
+		new ImageIcon("./src/img/cards/4_of_clubs.png").getImage(),
+		new ImageIcon("./src/img/cards/5_of_clubs.png").getImage(),
+		new ImageIcon("./src/img/cards/6_of_clubs.png").getImage(),
+		new ImageIcon("./src/img/cards/7_of_clubs.png").getImage(),
+		new ImageIcon("./src/img/cards/8_of_clubs.png").getImage(),
+		new ImageIcon("./src/img/cards/9_of_clubs.png").getImage(),
+		new ImageIcon("./src/img/cards/10_of_clubs.png").getImage(),
+		new ImageIcon("./src/img/cards/jack_of_clubs.png").getImage(),
+		new ImageIcon("./src/img/cards/queen_of_clubs.png").getImage(),
+		new ImageIcon("./src/img/cards/king_of_clubs.png").getImage()
 	};
 	
 	private static final Map<Utils.SUIT, Image[]> cardImages;

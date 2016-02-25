@@ -142,11 +142,12 @@ import javax.swing.Timer;
 		//
 		// Initialize Board Panel
 		//
-		BoardPanel boardPanel = new BoardPanel("data/felt.png", "data/table_rules.png");
+		//BoardPanel boardPanel = new BoardPanel("data/felt.png", "data/table_rules.png");
+                BoardPanel boardPanel = new BoardPanel("./src/img/felt.png");
                 boardPanel.setLayout(new GridBagLayout());
 		boardPanel.setPreferredSize(new Dimension(800, 600));
 		frame.add(boardPanel);
-		
+                
 		//
 		//
 		// Initialize Bet Panel

@@ -6,6 +6,7 @@
 package Forms;
 
 import Resources.GameUtil;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 
 /**
@@ -13,7 +14,6 @@ import javax.swing.ImageIcon;
  * @author Nadav
  */
 public class WiningPopup extends javax.swing.JFrame {
-
     /**
      * Creates new form WinPopup
      */
@@ -35,10 +35,11 @@ public class WiningPopup extends javax.swing.JFrame {
             @Override
             public void run() {
                 winPopup.dispose();
+               
             }
         },
                 7000
-        );       
+        ); 
     }
 
     /**
@@ -69,7 +70,7 @@ public class WiningPopup extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        this.dispose();
+     this.dispose();
     }//GEN-LAST:event_formWindowClosing
 
     /**
