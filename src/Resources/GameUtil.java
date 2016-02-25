@@ -62,25 +62,6 @@ public class GameUtil {
     
     public static void playShuffle()
     {
-        // open the sound file as a Java input stream
-//        String gongFile = "./src/audio/cardFan.wav";
-//        InputStream in = null;
-//        try {
-//            in = new FileInputStream(gongFile);
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(GameUtil.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        // create an audiostream from the inputstream
-//        AudioStream audioStream = null;
-//        try {
-//            audioStream = new AudioStream(in);
-//        } catch (IOException ex) {
-//            Logger.getLogger(GameUtil.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        // play the audio clip with the audioplayer class
-//        AudioPlayer.player.start(audioStream);
         AudioInputStream audioInputStream = null;
 
         Clip clip = null;

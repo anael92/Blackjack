@@ -146,6 +146,7 @@ public class ListOfUsers extends javax.swing.JFrame {
         labBack = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("BlackJack ANI - ADMIN");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -200,7 +201,7 @@ public class ListOfUsers extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRemoveUser);
-        btnRemoveUser.setBounds(100, 10, 123, 33);
+        btnRemoveUser.setBounds(100, 10, 150, 33);
 
         labBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/specialBack.png"))); // NOI18N
         labBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

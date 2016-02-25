@@ -150,6 +150,7 @@ public class ScoreTable extends javax.swing.JFrame {
         labHighScore = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("BlackJack ANI");
         setForeground(java.awt.Color.black);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {

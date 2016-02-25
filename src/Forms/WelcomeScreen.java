@@ -52,11 +52,13 @@ public class WelcomeScreen extends javax.swing.JFrame {
           }
         initMyComponents();
         
-        
+        this.getRootPane().setDefaultButton(btnGuest);
     }
+    
     
     public void initMyComponents()
     {
+        
         btnHebrew.setOpaque(false);
         btnHebrew.setContentAreaFilled(false);
         btnHebrew.setBorderPainted(false);
@@ -92,6 +94,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
         labBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("BlackJack ANI");
         setPreferredSize(new java.awt.Dimension(620, 418));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -136,6 +139,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
         btnLogin.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         btnLogin.setText("Login");
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogin.setDisplayedMnemonicIndex(3);
         btnLogin.setMaximumSize(new java.awt.Dimension(73, 25));
         btnLogin.setMinimumSize(new java.awt.Dimension(73, 25));
         btnLogin.setName("btnLogin"); // NOI18N

@@ -137,7 +137,7 @@ import javax.swing.Timer;
                 String file = "./src/img/card-symbols_bsmall.png";
                 ImageIcon img = new ImageIcon(file);
                  frame.setIconImage(img.getImage());
-                
+                frame.setTitle("BlackJack ANI");
                 
 		//
 		// Initialize Board Panel

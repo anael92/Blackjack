@@ -100,10 +100,10 @@ public class UserHome extends javax.swing.JFrame {
         mnuItmAbout = new javax.swing.JMenuItem();
         mnuItmChangePassword = new javax.swing.JMenuItem();
         mnuItmRemoveAccount = new javax.swing.JMenuItem();
+        mnuItemRules = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
-        setSize(new java.awt.Dimension(700, 380));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -158,7 +158,7 @@ public class UserHome extends javax.swing.JFrame {
         mnuAccount.setText("My Account");
 
         mnuItmAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/about.png"))); // NOI18N
-        mnuItmAbout.setText("About");
+        mnuItmAbout.setText("Profile");
         mnuItmAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItmAboutActionPerformed(evt);
@@ -184,11 +184,20 @@ public class UserHome extends javax.swing.JFrame {
         });
         mnuAccount.add(mnuItmRemoveAccount);
 
+        mnuItemRules.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/info-round-button_1.png"))); // NOI18N
+        mnuItemRules.setText("Rules");
+        mnuItemRules.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemRulesActionPerformed(evt);
+            }
+        });
+        mnuAccount.add(mnuItemRules);
+
         menuBar.add(mnuAccount);
 
         setJMenuBar(menuBar);
 
-        setSize(new java.awt.Dimension(656, 425));
+        setSize(new java.awt.Dimension(640, 425));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -338,6 +347,10 @@ public JMenuBar getMenu()
         previous.setVisible(true);
     }//GEN-LAST:event_labBackMouseClicked
 
+    private void mnuItemRulesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemRulesActionPerformed
+       new TableRules().setVisible(true);
+    }//GEN-LAST:event_mnuItemRulesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -381,6 +394,7 @@ public JMenuBar getMenu()
     protected javax.swing.JLabel labWelcomeUser;
     protected javax.swing.JMenuBar menuBar;
     protected javax.swing.JMenu mnuAccount;
+    protected javax.swing.JMenuItem mnuItemRules;
     protected javax.swing.JMenuItem mnuItmAbout;
     protected javax.swing.JMenuItem mnuItmChangePassword;
     protected javax.swing.JMenuItem mnuItmRemoveAccount;

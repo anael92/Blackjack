@@ -5,40 +5,17 @@
  */
 package Forms;
 
-import Resources.GameUtil;
-import javax.swing.ImageIcon;
-
 /**
  *
- * @author Nadav
+ * @author IBM
  */
-public class WiningPopup extends javax.swing.JFrame {
+public class TableRules extends javax.swing.JFrame {
 
     /**
-     * Creates new form WinPopup
+     * Creates new form TableRules
      */
-    public WiningPopup() {
-        GameUtil.WinPot();
+    public TableRules() {
         initComponents();
-        this.setResizable(false);
-        String file = "./src/img/card-symbols_bsmall.png";
-                ImageIcon img = new ImageIcon(file);
-                 this.setIconImage(img.getImage());
-    }
-    
-    public void showWin()
-    {
-        WiningPopup winPopup = new WiningPopup();
-        winPopup.setVisible(true);
-        new java.util.Timer().schedule(
-                new java.util.TimerTask() {
-            @Override
-            public void run() {
-                winPopup.dispose();
-            }
-        },
-                7000
-        );       
     }
 
     /**
@@ -50,27 +27,19 @@ public class WiningPopup extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        labTableRules = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
+        setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ezgif.com-gif-maker.gif"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 490, 301);
+        labTableRules.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/blackjack-card-values.jpg"))); // NOI18N
+        getContentPane().add(labTableRules);
+        labTableRules.setBounds(0, 0, 420, 610);
 
-        setSize(new java.awt.Dimension(496, 328));
+        setSize(new java.awt.Dimension(419, 600));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        this.dispose();
-    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -89,26 +58,25 @@ public class WiningPopup extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(WiningPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TableRules.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(WiningPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TableRules.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(WiningPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TableRules.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(WiningPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TableRules.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new WiningPopup().setVisible(true);
+                new TableRules().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel labTableRules;
     // End of variables declaration//GEN-END:variables
 }
