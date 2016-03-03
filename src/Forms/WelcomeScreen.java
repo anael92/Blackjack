@@ -5,6 +5,7 @@ import Users.User;
 import DataBase.DB;
 import Resources.LocalizationUtil;
 import Resources.GameUtil;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,7 +28,7 @@ public class WelcomeScreen extends javax.swing.JFrame {
           }
         initMyComponents();
         
-        this.getRootPane().setDefaultButton(btnGuest);
+        this.getRootPane().setDefaultButton(btnLogin);
     }
     
     
@@ -119,9 +120,14 @@ public class WelcomeScreen extends javax.swing.JFrame {
         btnLogin.setMinimumSize(new java.awt.Dimension(73, 25));
         btnLogin.setName("btnLogin"); // NOI18N
         btnLogin.setPreferredSize(new java.awt.Dimension(73, 25));
-        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnLoginMouseClicked(evt);
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+        btnLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnLoginKeyPressed(evt);
             }
         });
         getContentPane().add(btnLogin);
@@ -209,52 +215,50 @@ public class WelcomeScreen extends javax.swing.JFrame {
         txtUserName.setText("");
     }//GEN-LAST:event_txtUserNameMouseClicked
 
-    private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
-        String userName = txtUserName.getText().toString();
-        String password = txtPassword.getText().toString();
-        User player = db.login(userName, password);
-        if (player!= null)
-        {
-        clearComponents();
-        this.setVisible(false);
-        if (player.getPermission() == 2)
-        {
-            UserHome userHome = null;
-            if (this.language.equals("iw"))
-            {
-              userHome = new UserHome(player,this,language);  
-            }
-            else{
-             userHome = new UserHome(player,this);
-            }
-            userHome.setVisible(true);
-        }
-        else if (player.getPermission() == 1) {//admin
-            AdminHome adminHome = null;
-            if (this.language.equals("iw"))
-            {
-            adminHome = new AdminHome(player,this,this.language);
-            }
-            else{
-                adminHome = new AdminHome(player,this);
-            }
-            adminHome.setVisible(true);
-        }
-        }
-        else{
-              if (this.language.equals("iw"))
-            {
-                JOptionPane.showMessageDialog(null, "משתמש לא קיים!", "שגיאה",
-                        JOptionPane.INFORMATION_MESSAGE);   
-            }
-              else
-           JOptionPane.showMessageDialog(null, "User doesn't exist", "Error",
-                   JOptionPane.INFORMATION_MESSAGE);   
-         clearComponents();
-        }
+//       String userName = txtUserName.getText().toString();
+//        String password = txtPassword.getText().toString();
+//        User player = db.login(userName, password);
+//        if (player!= null)
+//        {
+//        clearComponents();
+//        this.setVisible(false);
+//        if (player.getPermission() == 2)
+//        {
+//            UserHome userHome = null;
+//            if (this.language.equals("iw"))
+//            {
+//              userHome = new UserHome(player,this,language);  
+//            }
+//            else{
+//             userHome = new UserHome(player,this);
+//            }
+//            userHome.setVisible(true);
+//        }
+//        else if (player.getPermission() == 1) {//admin
+//            AdminHome adminHome = null;
+//            if (this.language.equals("iw"))
+//            {
+//            adminHome = new AdminHome(player,this,this.language);
+//            }
+//            else{
+//                adminHome = new AdminHome(player,this);
+//            }
+//            adminHome.setVisible(true);
+//        }
+//        }
+//        else{
+//              if (this.language.equals("iw"))
+//            {
+//                JOptionPane.showMessageDialog(null, "משתמש לא קיים!", "שגיאה",
+//                        JOptionPane.INFORMATION_MESSAGE);   
+//            }
+//              else
+//           JOptionPane.showMessageDialog(null, "User doesn't exist", "Error",
+//                   JOptionPane.INFORMATION_MESSAGE);   
+//         clearComponents();
+//        }
         
-    }//GEN-LAST:event_btnLoginMouseClicked
-
+    
     private void clearComponents() {
         
         txtUserName.setText("");
@@ -326,6 +330,59 @@ public class WelcomeScreen extends javax.swing.JFrame {
     private void txtPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMouseClicked
         txtPassword.setText("");
     }//GEN-LAST:event_txtPasswordMouseClicked
+
+    private void btnLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+        {
+             btnLogin.doClick();
+        }
+    }//GEN-LAST:event_btnLoginKeyPressed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+         String userName = txtUserName.getText().toString();
+        String password = txtPassword.getText().toString();
+        User player = db.login(userName, password);
+        if (player!= null)
+        {
+        clearComponents();
+        this.setVisible(false);
+        if (player.getPermission() == 2)
+        {
+            UserHome userHome = null;
+            if (this.language.equals("iw"))
+            {
+              userHome = new UserHome(player,this,language);  
+            }
+            else{
+             userHome = new UserHome(player,this);
+            }
+            userHome.setVisible(true);
+        }
+        else if (player.getPermission() == 1) {//admin
+            AdminHome adminHome = null;
+            if (this.language.equals("iw"))
+            {
+            adminHome = new AdminHome(player,this,this.language);
+            }
+            else{
+                adminHome = new AdminHome(player,this);
+            }
+            adminHome.setVisible(true);
+        }
+        }
+        else{
+              if (this.language.equals("iw"))
+            {
+                JOptionPane.showMessageDialog(null, "משתמש לא קיים!", "שגיאה",
+                        JOptionPane.INFORMATION_MESSAGE);   
+            }
+              else
+           JOptionPane.showMessageDialog(null, "User doesn't exist", "Error",
+                   JOptionPane.INFORMATION_MESSAGE);   
+         clearComponents();
+        }
+        
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     public void initHebrew()
     {

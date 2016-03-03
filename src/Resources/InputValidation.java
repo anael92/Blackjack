@@ -1,5 +1,5 @@
 
-package Forms;
+package Resources;
 
 import Users.User;
 import DataBase.DB;

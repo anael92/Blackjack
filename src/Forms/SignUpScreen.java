@@ -1,6 +1,7 @@
 
 package Forms;
 
+import Resources.InputValidation;
 import Resources.GameUtil;
 import Resources.LocalizationUtil;
 import Resources.RoundedBorder;
@@ -276,7 +277,7 @@ public class SignUpScreen extends javax.swing.JFrame {
         labValidUserName.setMinimumSize(new java.awt.Dimension(7, 60));
         labValidUserName.setPreferredSize(new java.awt.Dimension(7, 15));
         getContentPane().add(labValidUserName);
-        labValidUserName.setBounds(120, 300, 280, 15);
+        labValidUserName.setBounds(120, 300, 300, 15);
 
         labBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/back2.png"))); // NOI18N
         labBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
