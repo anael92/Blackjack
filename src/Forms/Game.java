@@ -18,11 +18,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -31,6 +28,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
+
+/**
+ *
+ * @author ANI
+ */
 
     public class Game implements ActionListener {
 	
@@ -142,7 +144,7 @@ import javax.swing.Timer;
 		//
 		// Initialize Board Panel
 		//
-		//BoardPanel boardPanel = new BoardPanel("data/felt.png", "data/table_rules.png");
+                
                 BoardPanel boardPanel = new BoardPanel("./src/img/felt.png");
                 boardPanel.setLayout(new GridBagLayout());
 		boardPanel.setPreferredSize(new Dimension(800, 600));

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Forms;
 
 import Users.User;
@@ -12,13 +8,14 @@ import java.util.ResourceBundle;
 
 /**
  *
- * @author Anael
+ * @author ANI
  */
 public class InputValidation {
     
     public static ResourceBundle localizedResourceBundle;
 
-    public static void setLocalizedResourceBundle(ResourceBundle localizedResourceBundle) {
+    public static void setLocalizedResourceBundle
+        (ResourceBundle localizedResourceBundle) {
         InputValidation.localizedResourceBundle = localizedResourceBundle;
     }
     
@@ -49,12 +46,15 @@ public class InputValidation {
        for (User u : db.getUsers())
        {
            if (u.getUserName().equals(userName))
-               return LocalizationUtil.localizedResourceBundle.getString("UserNameTaken");
+               return LocalizationUtil.localizedResourceBundle
+                       .getString("UserNameTaken");
        } 
        if (userName.length() > 20 || userName.length() < 4)
-           return LocalizationUtil.localizedResourceBundle.getString("UserNameLegnth");
+           return LocalizationUtil.localizedResourceBundle
+                   .getString("UserNameLegnth");
        else if (userName.isEmpty())
-           return LocalizationUtil.localizedResourceBundle.getString("Empty");
+           return LocalizationUtil.localizedResourceBundle
+                   .getString("Empty");
        
        return "";
     }
@@ -63,9 +63,11 @@ public class InputValidation {
     public static String checkPassword(String password)
     {
        if (password.length() < 6 || password.length() > 20) 
-           return LocalizationUtil.localizedResourceBundle.getString("PasswordLength");
+           return LocalizationUtil.localizedResourceBundle
+                   .getString("PasswordLength");
        else if (password.isEmpty())
-         return LocalizationUtil.localizedResourceBundle.getString("Empty");
+         return LocalizationUtil.localizedResourceBundle
+                 .getString("Empty");
        
        return "";
 

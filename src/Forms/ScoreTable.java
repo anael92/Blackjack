@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Forms;
 
 import Resources.GameUtil;
@@ -12,42 +7,32 @@ import DataBase.DB;
 import DataBase.DBUtils;
 import blackjack.Score;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Image;
-import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import org.apache.derby.impl.sql.execute.AggregatorInfoList;
 
 /**
  *
  * @author ANI
  */
 public class ScoreTable extends javax.swing.JFrame {
+
     UserHome previous = null;
     User player = null;
     String language = "";
     DefaultTableModel dtm;
     List<Score> scores = new ArrayList<Score>();
+
     /**
      * Creates new form ScoreTable
      */
@@ -56,124 +41,120 @@ public class ScoreTable extends javax.swing.JFrame {
         initTable();
         transparentButtons();
     }
-        // Initialize ScoreTable with the previous form, and the current player
-        public ScoreTable(UserHome previous,User player) {
-            this();
-            this.previous = previous;
-            this.player = player;
+    // Initialize ScoreTable with the previous form, and the current player
+
+    public ScoreTable(UserHome previous, User player) {
+        this();
+        this.previous = previous;
+        this.player = player;
     }
-        // If a language is choosen
-        public ScoreTable(UserHome previous,User player,String lang) {
-            initComponents();
-            this.previous = previous;
-            this.player = player;
-            this.language = lang;
-            initTable();
-            if (this.language.equals("iw"))
-            {
-                LocalizationUtil.changeOptionPane_iw();
-                LocalizationUtil.localizedResourceBundle = LocalizationUtil.getBundleScoreTableIW();
-                updateCaption();
-            }
-            transparentButtons();
+    // If a language is choosen
+
+    public ScoreTable(UserHome previous, User player, String lang) {
+        initComponents();
+        this.previous = previous;
+        this.player = player;
+        this.language = lang;
+        initTable();
+        if (this.language.equals("iw")) {
+            LocalizationUtil.changeOptionPane_iw();
+            LocalizationUtil.localizedResourceBundle = LocalizationUtil.getBundleScoreTableIW();
+            updateCaption();
+        }
+        transparentButtons();
     }
-     
+
     // if hebrew was choosen
-    private void updateCaption()
-    {
+    private void updateCaption() {
         Vector columnsName = new Vector();
-        columnsName.addElement(LocalizationUtil.localizedResourceBundle.getString("UserName"));
-        columnsName.addElement(LocalizationUtil.localizedResourceBundle.getString("Wins"));
-        columnsName.addElement(LocalizationUtil.localizedResourceBundle.getString("Balance"));
+        columnsName.addElement(LocalizationUtil.localizedResourceBundle
+                .getString("UserName"));
+        columnsName.addElement(LocalizationUtil.localizedResourceBundle
+                .getString("Wins"));
+        columnsName.addElement(LocalizationUtil.localizedResourceBundle
+                .getString("Balance"));
         dtm.setColumnIdentifiers(columnsName);
-        labHighScore.setText(LocalizationUtil.localizedResourceBundle.getString("labHighScore"));
-        jrdbWins.setText(LocalizationUtil.localizedResourceBundle.getString("jrdbWins"));
-        jrdbBalance.setText(LocalizationUtil.localizedResourceBundle.getString("jrdbBalance"));
-        
+        labHighScore.setText(LocalizationUtil.localizedResourceBundle
+                .getString("labHighScore"));
+        jrdbWins.setText(LocalizationUtil.localizedResourceBundle
+                .getString("jrdbWins"));
+        jrdbBalance.setText(LocalizationUtil.localizedResourceBundle
+                .getString("jrdbBalance"));
+
     }
-    
-    private void transparentButtons()
-    {
+
+    private void transparentButtons() {
         jrdbWins.setOpaque(false);
         jrdbWins.setContentAreaFilled(false);
         jrdbWins.setBorderPainted(false);
-        try {
-            ImageIcon i = new ImageIcon(ImageIO.read(new URL("http://goo.gl/878ZFH")).getScaledInstance(25, 25, Image.SCALE_SMOOTH));
-            jrdbWins.setIcon(i);
-            jrdbBalance.setIcon(i);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+
+        ImageIcon im = new ImageIcon("./src/img/radioButton.png");
+        jrdbWins.setIcon(im);
+        jrdbBalance.setIcon(im);
+
         jrdbBalance.setOpaque(false);
         jrdbBalance.setContentAreaFilled(false);
         jrdbBalance.setBorderPainted(false);
     }
-    
+
     // intialize table by importing data from the database
-    private void initTable()
-    {
-         GameUtil.setIcon(this);
+    private void initTable() {
+        GameUtil.setIcon(this);
         DB db = DB.getInstance();
         String sql = "SELECT * FROM APP.SCORE";
-       try{
-        Class.forName(DBUtils.DbDriverClass);
-       Connection connection = DriverManager.getConnection(
-                 DBUtils.DbUrl, DBUtils.DbUser, DBUtils.DbPassword );
-       
-       Statement stat = connection.createStatement();
-       ResultSet resultSet = stat.executeQuery(sql);
-       ResultSetMetaData rsmd = resultSet.getMetaData();
+        try {
+            Class.forName(DBUtils.DbDriverClass);
+            Connection connection = DriverManager.getConnection(
+                    DBUtils.DbUrl, DBUtils.DbUser, DBUtils.DbPassword);
 
-        dtm = new DefaultTableModel();
-       Vector columnsName = new Vector();
+            Statement stat = connection.createStatement();
+            ResultSet resultSet = stat.executeQuery(sql);
+            ResultSetMetaData rsmd = resultSet.getMetaData();
 
-        columnsName.addElement("User Name");
-        columnsName.addElement("Wins");
-        columnsName.addElement("Balance");
-       dtm.setColumnIdentifiers(columnsName);
-       
-       // Adding all information to Score list
-       while (resultSet.next())
-       {
-           Score s;
-           int userId = resultSet.getInt("USERID");
-            int wins = resultSet.getInt("WINS");
-            int balance = resultSet.getInt("BALANCE");
-            
-            String userName = "";
-            for (User u : db.getUsers())
-            {
-                if (u.getId() == userId)
-                {
-                    userName = u.getUserName();
-                    break;
+            dtm = new DefaultTableModel();
+            Vector columnsName = new Vector();
+
+            columnsName.addElement("User Name");
+            columnsName.addElement("Wins");
+            columnsName.addElement("Balance");
+            dtm.setColumnIdentifiers(columnsName);
+
+            // Adding all information to Score list
+            while (resultSet.next()) {
+                Score s;
+                int userId = resultSet.getInt("USERID");
+                int wins = resultSet.getInt("WINS");
+                int balance = resultSet.getInt("BALANCE");
+
+                String userName = "";
+                for (User u : db.getUsers()) {
+                    if (u.getId() == userId) {
+                        userName = u.getUserName();
+                        break;
+                    }
                 }
-           }
-           s = new Score(userName,wins,balance);
-           scores.add(s);
-       }
-       // Sorting list by balance
-       Collections.sort(scores);
-       for (Score curr : scores)
-       {
-           Vector dataRows = new Vector();
-           dataRows.addElement(curr.getUserName());
-           dataRows.addElement(curr.getWins());
-           dataRows.addElement(curr.getBalance());
-           dtm.addRow(dataRows); 
-       }
-       scoreTable.setModel(dtm);
-       
-       }catch(Exception e)
-       {
-           System.out.println(e.getCause());
-       }
-        
-       scoreTable.setEnabled(false);
-   //    scoreTable.setBackground(new java.awt.Color(204, 204, 255));
-       scoreTable.getTableHeader().setReorderingAllowed(false);
-       this.getContentPane().setBackground(Color.BLACK);
-       scoreTable.setBackground(new java.awt.Color(204, 204, 255));
+                s = new Score(userName, wins, balance);
+                scores.add(s);
+            }
+            // Sorting list by balance
+            Collections.sort(scores);
+            for (Score curr : scores) {
+                Vector dataRows = new Vector();
+                dataRows.addElement(curr.getUserName());
+                dataRows.addElement(curr.getWins());
+                dataRows.addElement(curr.getBalance());
+                dtm.addRow(dataRows);
+            }
+            scoreTable.setModel(dtm);
+
+        } catch (Exception e) {
+            System.out.println(e.getCause());
+        }
+
+        scoreTable.setEnabled(false);
+        scoreTable.getTableHeader().setReorderingAllowed(false);
+        this.getContentPane().setBackground(Color.BLACK);
+        scoreTable.setBackground(new java.awt.Color(204, 204, 255));
 
     }
 
@@ -190,7 +171,7 @@ public class ScoreTable extends javax.swing.JFrame {
         jrdbWins = new javax.swing.JRadioButton();
         labBackground = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("BlackJack ANI");
         setForeground(java.awt.Color.black);
         setName("scoreTable"); // NOI18N
@@ -273,20 +254,18 @@ public class ScoreTable extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        int confirmed;
-        if(this.language.equals("iw"))
-        {
+        int confirmed = JOptionPane.NO_OPTION;
+        if (this.language.equals("iw")) {
             confirmed = LocalizationUtil.exitDialog();
+        } else {
+            confirmed = JOptionPane.showConfirmDialog(null,
+                    "Are you sure you want to exit the program?", "Exit Program",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         }
-        else{
-        confirmed = JOptionPane.showConfirmDialog(null, 
-        "Are you sure you want to exit the program?", "Exit Program",
-        JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
-       }
-    if (confirmed == JOptionPane.YES_OPTION) {
-      System.exit(0);
-    }
-        
+        if (confirmed == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+
     }//GEN-LAST:event_formWindowClosing
 
     private void labBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labBackMouseClicked
@@ -295,51 +274,48 @@ public class ScoreTable extends javax.swing.JFrame {
     }//GEN-LAST:event_labBackMouseClicked
 
     private void jrdbBalanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrdbBalanceActionPerformed
-       // Sorting list by balance
-       clearTable();
-       Collections.sort(scores);
-       for (Score curr : scores)
-       {
-           Vector dataRows = new Vector();
-           dataRows.addElement(curr.getUserName());
-           dataRows.addElement(curr.getWins());
-           dataRows.addElement(curr.getBalance());
-           dtm.addRow(dataRows); 
-       }
-       scoreTable.setModel(dtm);
+        // Sorting list by balance
+        clearTable();
+        Collections.sort(scores);
+        for (Score curr : scores) {
+            Vector dataRows = new Vector();
+            dataRows.addElement(curr.getUserName());
+            dataRows.addElement(curr.getWins());
+            dataRows.addElement(curr.getBalance());
+            dtm.addRow(dataRows);
+        }
+        scoreTable.setModel(dtm);
     }//GEN-LAST:event_jrdbBalanceActionPerformed
 
     private void jrdbWinsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrdbWinsActionPerformed
         clearTable();
-        Collections.sort(scores, new Comparator<Score>(){
+        Collections.sort(scores, new Comparator<Score>() {
             @Override
             public int compare(Score o1, Score o2) {
-                  return o2.getWins()-o1.getWins();
+                return o2.getWins() - o1.getWins();
             }
 
         });
-       for (Score curr : scores)
-       {
-           Vector dataRows = new Vector();
-           dataRows.addElement(curr.getUserName());
-           dataRows.addElement(curr.getWins());
-           dataRows.addElement(curr.getBalance());
-           dtm.addRow(dataRows); 
-       }
-       scoreTable.setModel(dtm);
+        for (Score curr : scores) {
+            Vector dataRows = new Vector();
+            dataRows.addElement(curr.getUserName());
+            dataRows.addElement(curr.getWins());
+            dataRows.addElement(curr.getBalance());
+            dtm.addRow(dataRows);
+        }
+        scoreTable.setModel(dtm);
     }//GEN-LAST:event_jrdbWinsActionPerformed
 
-    private void clearTable()
-    {
-    DefaultTableModel model = (DefaultTableModel)scoreTable.getModel();
+    private void clearTable() {
+        DefaultTableModel model = (DefaultTableModel) scoreTable.getModel();
 
-    while (model.getRowCount() > 0){
-        for (int i = 0; i < model.getRowCount(); ++i){
-            model.removeRow(i);
+        while (model.getRowCount() > 0) {
+            for (int i = 0; i < model.getRowCount(); ++i) {
+                model.removeRow(i);
+            }
         }
     }
-    }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btnGroupSort;
     private javax.swing.JScrollPane jScrollPane1;

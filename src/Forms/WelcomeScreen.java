@@ -3,38 +3,13 @@ package Forms;
 
 import Users.User;
 import DataBase.DB;
-import DataBase.DB;
-import Forms.Game;
 import Resources.LocalizationUtil;
 import Resources.GameUtil;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import static javax.swing.GroupLayout.Alignment.CENTER;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.text.JTextComponent;
-
-
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
- * @author Nadav
+ * @author ANI
  */
 public class WelcomeScreen extends javax.swing.JFrame {
 
@@ -269,10 +244,12 @@ public class WelcomeScreen extends javax.swing.JFrame {
         else{
               if (this.language.equals("iw"))
             {
-                JOptionPane.showMessageDialog(null, "משתמש לא קיים!", "שגיאה", JOptionPane.INFORMATION_MESSAGE);   
+                JOptionPane.showMessageDialog(null, "משתמש לא קיים!", "שגיאה",
+                        JOptionPane.INFORMATION_MESSAGE);   
             }
               else
-           JOptionPane.showMessageDialog(null, "User doesn't exist", "Error", JOptionPane.INFORMATION_MESSAGE);   
+           JOptionPane.showMessageDialog(null, "User doesn't exist", "Error",
+                   JOptionPane.INFORMATION_MESSAGE);   
          clearComponents();
         }
         
@@ -330,7 +307,8 @@ public class WelcomeScreen extends javax.swing.JFrame {
 
     private void btnEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnglishActionPerformed
         String selectedLanguage = btnEnglish.getActionCommand();
-        LocalizationUtil.localizedResourceBundle = LocalizationUtil.getBundleWelcomeScreenEN();
+        LocalizationUtil.localizedResourceBundle =
+                LocalizationUtil.getBundleWelcomeScreenEN();
         updateCaptions();  
         initEnglish();
         language = "en";
@@ -338,7 +316,8 @@ public class WelcomeScreen extends javax.swing.JFrame {
 
     private void btnHebrewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHebrewActionPerformed
         String selectedLanguage = btnHebrew.getActionCommand();
-        LocalizationUtil.localizedResourceBundle = LocalizationUtil.getBundleWelcomeScreenIW();
+        LocalizationUtil.localizedResourceBundle =
+                LocalizationUtil.getBundleWelcomeScreenIW();
         updateCaptions();  
         initHebrew();
         language = "iw";
@@ -371,54 +350,24 @@ public class WelcomeScreen extends javax.swing.JFrame {
     
    public void updateCaptions()
    {
-        labUserName.setText(LocalizationUtil.localizedResourceBundle.getString("labUserName"));
-        txtUserName.setText(LocalizationUtil.localizedResourceBundle.getString("txtUserName"));
-        labPassword.setText(LocalizationUtil.localizedResourceBundle.getString("labPassword"));
-        txtPassword.setText(LocalizationUtil.localizedResourceBundle.getString("txtPassword"));
-        btnSignUp.setText(LocalizationUtil.localizedResourceBundle.getString("btnSignUp"));
-        btnLogin.setText(LocalizationUtil.localizedResourceBundle.getString("btnLogin"));
-        labBlackjack.setText(LocalizationUtil.localizedResourceBundle.getString("labBlackjack"));
-        btnGuest.setText(LocalizationUtil.localizedResourceBundle.getString("btnGuest"));
+        labUserName.setText(LocalizationUtil.localizedResourceBundle
+                .getString("labUserName"));
+        txtUserName.setText(LocalizationUtil.localizedResourceBundle
+                .getString("txtUserName"));
+        labPassword.setText(LocalizationUtil.localizedResourceBundle
+                .getString("labPassword"));
+        txtPassword.setText(LocalizationUtil.localizedResourceBundle
+                .getString("txtPassword"));
+        btnSignUp.setText(LocalizationUtil.localizedResourceBundle
+                .getString("btnSignUp"));
+        btnLogin.setText(LocalizationUtil.localizedResourceBundle
+                .getString("btnLogin"));
+        labBlackjack.setText(LocalizationUtil.localizedResourceBundle
+                .getString("labBlackjack"));
+        btnGuest.setText(LocalizationUtil.localizedResourceBundle
+                .getString("btnGuest"));
    }
     
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(WelcomeScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(WelcomeScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(WelcomeScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(WelcomeScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                WelcomeScreen welcomeScreen = new WelcomeScreen();
-                welcomeScreen.setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnglish;
     private javax.swing.JButton btnGuest;

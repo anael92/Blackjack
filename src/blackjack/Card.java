@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package blackjack;
 
 import blackjack.Utils.RANK;
@@ -10,7 +6,7 @@ import blackjack.Utils.SUIT;
 
 /**
  *
- * @author IBM
+ * @author ANI
  */
 public class Card {
     
@@ -99,10 +95,6 @@ public class Card {
         else
             return "Hidden";
     }
-    
-    
-    
-    
     }
 
 

@@ -1,25 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Forms;
 
 import Resources.GameUtil;
 import Resources.LocalizationUtil;
+import Resources.RoundedBorder;
 import Users.RegularUser;
-import java.awt.event.WindowEvent;
+import java.awt.Color;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 /**
  *
- * @author Anael
+ * @author ANI
  */
 public class SignUpScreen extends javax.swing.JFrame {
     WelcomeScreen previous = null;
@@ -32,12 +26,17 @@ public class SignUpScreen extends javax.swing.JFrame {
 
         initComponents();
         initMyComponents();
+        btnSignUp.setOpaque(false);
+        btnSignUp.setContentAreaFilled(false);
+        btnSignUp.setBorder(new RoundedBorder(50));
+        btnSignUp.setForeground(Color.BLACK);
     }
     
     public SignUpScreen(WelcomeScreen previous) {
         this();
         this.previous = previous;
-        InputValidation.setLocalizedResourceBundle(LocalizationUtil.getBundleInputValidation());
+        InputValidation.setLocalizedResourceBundle
+        (LocalizationUtil.getBundleInputValidation());
     }
     
     public SignUpScreen(WelcomeScreen previous,String language) {
@@ -46,7 +45,8 @@ public class SignUpScreen extends javax.swing.JFrame {
         if (language.equals("iw"))
         {
           changeToHebrew();
-          InputValidation.setLocalizedResourceBundle(LocalizationUtil.getBundleInputValidationIW());
+          InputValidation.setLocalizedResourceBundle
+        (LocalizationUtil.getBundleInputValidationIW());
         }
     }
     
@@ -66,9 +66,11 @@ public class SignUpScreen extends javax.swing.JFrame {
     
     public final void changeToHebrew()
     {
-          LocalizationUtil.localizedResourceBundle = ResourceBundle.getBundle("Resources.UiSignUp_iw", new Locale("iw"));
+          LocalizationUtil.localizedResourceBundle = 
+           ResourceBundle.getBundle("Resources.UiSignUp_iw", new Locale("iw"));
           updateCaptions();
           initHebrew();
+          LocalizationUtil.changeOptionPane_iw();
     }
     
     public void initHebrew()
@@ -100,15 +102,24 @@ public class SignUpScreen extends javax.swing.JFrame {
     
        public void updateCaptions()
    {
-        labTitle.setText(LocalizationUtil.localizedResourceBundle.getString("labTitle"));
-        labUserName.setText(LocalizationUtil.localizedResourceBundle.getString("labUserName"));
-        labPassword.setText(LocalizationUtil.localizedResourceBundle.getString("labPassword"));
-        labGender.setText(LocalizationUtil.localizedResourceBundle.getString("labGender"));
-        btnSignUp.setText(LocalizationUtil.localizedResourceBundle.getString("btnSignUp"));
-        rdbFemale.setText(LocalizationUtil.localizedResourceBundle.getString("rdbFemale"));
-        rdbMale.setText(LocalizationUtil.localizedResourceBundle.getString("rdbMale"));
-        labFirstName.setText(LocalizationUtil.localizedResourceBundle.getString("labFirstName"));
-        labLastName.setText(LocalizationUtil.localizedResourceBundle.getString("labLastName"));
+        labTitle.setText(LocalizationUtil.localizedResourceBundle
+                .getString("labTitle"));
+        labUserName.setText(LocalizationUtil.localizedResourceBundle
+                .getString("labUserName"));
+        labPassword.setText(LocalizationUtil.localizedResourceBundle
+                .getString("labPassword"));
+        labGender.setText(LocalizationUtil.localizedResourceBundle
+                .getString("labGender"));
+        btnSignUp.setText(LocalizationUtil.localizedResourceBundle
+                .getString("btnSignUp"));
+        rdbFemale.setText(LocalizationUtil.localizedResourceBundle
+                .getString("rdbFemale"));
+        rdbMale.setText(LocalizationUtil.localizedResourceBundle
+                .getString("rdbMale"));
+        labFirstName.setText(LocalizationUtil.localizedResourceBundle
+                .getString("labFirstName"));
+        labLastName.setText(LocalizationUtil.localizedResourceBundle
+                .getString("labLastName"));
    }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -233,13 +244,14 @@ public class SignUpScreen extends javax.swing.JFrame {
 
         btnSignUp.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnSignUp.setText("Sign Up");
+        btnSignUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignUpActionPerformed(evt);
             }
         });
         getContentPane().add(btnSignUp);
-        btnSignUp.setBounds(140, 370, 170, 40);
+        btnSignUp.setBounds(130, 370, 170, 40);
 
         labSignture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/signature.png"))); // NOI18N
         getContentPane().add(labSignture);
@@ -296,13 +308,23 @@ public class SignUpScreen extends javax.swing.JFrame {
         {
             if (b == false)
             {
-             JOptionPane.showMessageDialog(null, "Invalid Information", "Error", JOptionPane.ERROR_MESSAGE);        
+                if (this.language.equals("iw"))
+                    JOptionPane.showMessageDialog(null, "השדות אינם מלאים",
+                            "שגיאה", JOptionPane.ERROR_MESSAGE);
+                else
+                  JOptionPane.showMessageDialog(null, "Invalid Information",
+                          "Error", JOptionPane.ERROR_MESSAGE);        
              return;
             }
         }
         if (!rdbFemale.isSelected() && !rdbMale.isSelected())
         {
-           JOptionPane.showMessageDialog(null, "Please choose gender", "Error", JOptionPane.ERROR_MESSAGE);        
+            if (this.language.equals("iw"))
+                JOptionPane.showMessageDialog(null, "יש לסמן מין", "שגיאה",
+                        JOptionPane.ERROR_MESSAGE); 
+            else
+                 JOptionPane.showMessageDialog(null, "Please choose gender", 
+                         "Error", JOptionPane.ERROR_MESSAGE);        
            return;
         }
         
@@ -317,6 +339,12 @@ public class SignUpScreen extends javax.swing.JFrame {
             gender = rdbMale.getText();
         RegularUser u = new RegularUser();
         u.signUp(firstName, lastName, gender, userName, password);
+        if(this.language.equals("iw"))
+             JOptionPane.showMessageDialog(null,"נרשמת בהצלחה",
+                     "הפעולה הסתיימה",JOptionPane.INFORMATION_MESSAGE);
+          else
+          JOptionPane.showMessageDialog(null,"Sign Up Successfully",
+                  "Action Complete",JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
         previous.setVisible(true);
     }//GEN-LAST:event_btnSignUpActionPerformed
@@ -371,40 +399,6 @@ public class SignUpScreen extends javax.swing.JFrame {
         previous.setVisible(true);
     }//GEN-LAST:event_labBackMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SignUpScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SignUpScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SignUpScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SignUpScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SignUpScreen().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btnGroupGender;

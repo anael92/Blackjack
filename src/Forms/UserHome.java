@@ -1,86 +1,80 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Forms;
 
 import Resources.GameUtil;
 import Resources.LocalizationUtil;
 import Users.User;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import javax.swing.Box;
-import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 /**
  *
- * @author IBM
+ * @author ANI
  */
 public class UserHome extends javax.swing.JFrame {
+
     User player = null;
     WelcomeScreen previous = null;
     String language = "";
+
     /**
      * Creates new form UserHome
      */
     public UserHome() {
         initComponents();
-         GameUtil.setIcon(this);
+        GameUtil.setIcon(this);
     }
-    
-      public UserHome(WelcomeScreen previous) {
+
+    public UserHome(WelcomeScreen previous) {
         this();
         this.previous = previous;
     }
-    
-    public UserHome(User player,WelcomeScreen previous) {
+
+    public UserHome(User player, WelcomeScreen previous) {
         this(previous);
         this.player = player;
         labWelcomeUser.setText(labWelcomeUser.getText() + player.getFirstName()
                 + " " + player.getLastName());
     }
-    
-        public UserHome(User player,WelcomeScreen previous, String lang) {
-        this(player,previous);
+
+    public UserHome(User player, WelcomeScreen previous, String lang) {
+        this(player, previous);
         this.language = lang;
-        if (lang.equals("iw"))
-        {
+        if (lang.equals("iw")) {
             changeToHebrew();
         }
     }
-       
-        public void changeToHebrew()
-        {
-          LocalizationUtil.localizedResourceBundle = LocalizationUtil.getBundleHomeIW();
-          updateCaptions();
-          LocalizationUtil.changeOptionPane_iw();
-        }
-    
-       public void updateCaptions()
-   {
-        btnPlay.setText(LocalizationUtil.localizedResourceBundle.getString("btnPlay"));
-        btnScoreTable.setText(LocalizationUtil.localizedResourceBundle.getString("btnScoreTable"));
-        labWelcomeUser.setText(LocalizationUtil.localizedResourceBundle.getString("labWelcomeUser"));
-        labWelcomeUser.setText(labWelcomeUser.getText() + player.getFirstName()+ " " + player.getLastName());
-        mnuAccount.setText(LocalizationUtil.localizedResourceBundle.getString("mnuAccount"));
-        mnuItmAbout.setText(LocalizationUtil.localizedResourceBundle.getString("mnuItmAbout"));
-        mnuItmChangePassword.setText(LocalizationUtil.localizedResourceBundle.getString("mnuItmChangePassword"));
-        mnuItmRemoveAccount.setText(LocalizationUtil.localizedResourceBundle.getString("mnuItmRemoveAccount"));
-   }
-    
+
+    public void changeToHebrew() {
+        LocalizationUtil.localizedResourceBundle = 
+                LocalizationUtil.getBundleHomeIW();
+        updateCaptions();
+        LocalizationUtil.changeOptionPane_iw();
+    }
+
+    public void updateCaptions() {
+        btnPlay.setText(LocalizationUtil.localizedResourceBundle
+                .getString("btnPlay"));
+        btnScoreTable.setText(LocalizationUtil.localizedResourceBundle
+                .getString("btnScoreTable"));
+        labWelcomeUser.setText(LocalizationUtil.localizedResourceBundle
+                .getString("labWelcomeUser"));
+        labWelcomeUser.setText(labWelcomeUser.getText() + player
+                .getFirstName() + " " + player.getLastName());
+        mnuAccount.setText(LocalizationUtil.localizedResourceBundle
+                .getString("mnuAccount"));
+        mnuItmAbout.setText(LocalizationUtil.localizedResourceBundle
+                .getString("mnuItmAbout"));
+        mnuItmChangePassword.setText(LocalizationUtil.localizedResourceBundle
+                .getString("mnuItmChangePassword"));
+        mnuItmRemoveAccount.setText(LocalizationUtil.localizedResourceBundle
+                .getString("mnuItmRemoveAccount"));
+        mnuItemGameRules.setText(LocalizationUtil.localizedResourceBundle
+                .getString("mnuItemGameRules"));
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -100,7 +94,7 @@ public class UserHome extends javax.swing.JFrame {
         mnuItmAbout = new javax.swing.JMenuItem();
         mnuItmChangePassword = new javax.swing.JMenuItem();
         mnuItmRemoveAccount = new javax.swing.JMenuItem();
-        mnuItemRules = new javax.swing.JMenuItem();
+        mnuItemGameRules = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -151,14 +145,19 @@ public class UserHome extends javax.swing.JFrame {
         labBack.setBounds(10, 280, 64, 70);
 
         labBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cardBackground.jpg"))); // NOI18N
+        labBackground.setMaximumSize(null);
+        labBackground.setMinimumSize(null);
+        labBackground.setPreferredSize(null);
         getContentPane().add(labBackground);
-        labBackground.setBounds(0, 0, 672, 380);
+        labBackground.setBounds(0, -30, 632, 435);
 
         mnuAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/account.png"))); // NOI18N
         mnuAccount.setText("My Account");
+        mnuAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         mnuItmAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/about.png"))); // NOI18N
         mnuItmAbout.setText("Profile");
+        mnuItmAbout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mnuItmAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItmAboutActionPerformed(evt);
@@ -168,6 +167,7 @@ public class UserHome extends javax.swing.JFrame {
 
         mnuItmChangePassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/password.png"))); // NOI18N
         mnuItmChangePassword.setText("Change Password");
+        mnuItmChangePassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mnuItmChangePassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItmChangePasswordActionPerformed(evt);
@@ -177,6 +177,7 @@ public class UserHome extends javax.swing.JFrame {
 
         mnuItmRemoveAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/removeAccount.png"))); // NOI18N
         mnuItmRemoveAccount.setText("Remove My Account");
+        mnuItmRemoveAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mnuItmRemoveAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItmRemoveAccountActionPerformed(evt);
@@ -184,28 +185,28 @@ public class UserHome extends javax.swing.JFrame {
         });
         mnuAccount.add(mnuItmRemoveAccount);
 
-        mnuItemRules.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/info-round-button_1.png"))); // NOI18N
-        mnuItemRules.setText("Rules");
-        mnuItemRules.addActionListener(new java.awt.event.ActionListener() {
+        mnuItemGameRules.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/info-round-button_1.png"))); // NOI18N
+        mnuItemGameRules.setText("Game Rules");
+        mnuItemGameRules.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mnuItemGameRules.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuItemRulesActionPerformed(evt);
+                mnuItemGameRulesActionPerformed(evt);
             }
         });
-        mnuAccount.add(mnuItemRules);
+        mnuAccount.add(mnuItemGameRules);
 
         menuBar.add(mnuAccount);
 
         setJMenuBar(menuBar);
 
-        setSize(new java.awt.Dimension(640, 425));
+        setSize(new java.awt.Dimension(632, 435));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-public JMenuBar getMenu()
-{
-    return menuBar;
-}
-    
+    public JMenuBar getMenu() {
+        return menuBar;
+    }
+
 //protected void removeListeners(){
 //    this.mnuItmAbout.removeActionListener(this);
 //    this.mnuItmChangePassword.removeActionListener(this);
@@ -213,27 +214,23 @@ public JMenuBar getMenu()
 //}
 
     private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
-        this.setVisible(false);  
+        this.setVisible(false);
         Game game;
-        if (this.language.equals("iw"))
-        {
-          game = new Game(player,this,this.language);  
+        if (this.language.equals("iw")) {
+            game = new Game(player, this, this.language);
+        } else {
+            game = new Game(player, this);
         }
-        else{
-            game = new Game(player,this);
-        }
-        game.initializeGUI();  
+        game.initializeGUI();
     }//GEN-LAST:event_btnPlayActionPerformed
 
     private void btnScoreTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScoreTableActionPerformed
-        this.setVisible(false);  
+        this.setVisible(false);
         ScoreTable scoreTable;
-        if (this.language.equals("iw"))
-        {
-            scoreTable = new ScoreTable(this,player,this.language);
-        }
-        else{
-         scoreTable = new ScoreTable(this,player);
+        if (this.language.equals("iw")) {
+            scoreTable = new ScoreTable(this, player, this.language);
+        } else {
+            scoreTable = new ScoreTable(this, player);
         }
         scoreTable.setVisible(true);
     }//GEN-LAST:event_btnScoreTableActionPerformed
@@ -248,9 +245,10 @@ public JMenuBar getMenu()
 
         if (this.language.equals("iw")) {
             boolean choice = LocalizationUtil.changePaswword_iw(message);
-            if (oldPassword.getText() == null || newPassword.getText() == null) {
+            if (oldPassword.getText() == null || newPassword.getText() == null){
 
-            } else if (player.changePassword(oldPassword.getText(), newPassword.getText())) {
+            } else if (player.changePassword(oldPassword.getText(),
+                    newPassword.getText())) {
                 JOptionPane.showMessageDialog(null, "הסיסמא שונתה בהצלחה!");
                 this.dispose();
                 previous.setVisible(true);
@@ -275,71 +273,72 @@ public JMenuBar getMenu()
     }
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         int confirmed;
-        if(this.language.equals("iw"))
-        {
+        if (this.language.equals("iw")) {
             confirmed = LocalizationUtil.exitDialog();
+        } else {
+            confirmed = JOptionPane.showConfirmDialog(null,
+                    "Are you sure you want to exit the program?", "Exit Program",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         }
-        else{
-        confirmed = JOptionPane.showConfirmDialog(null, 
-        "Are you sure you want to exit the program?", "Exit Program",
-        JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+        if (confirmed == JOptionPane.YES_OPTION) {
+            System.exit(0);
         }
-    if (confirmed == JOptionPane.YES_OPTION) {
-      System.exit(0);
-    }
-        
+
     }//GEN-LAST:event_formWindowClosing
 
     private void mnuItmAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItmAboutActionPerformed
 
-        int per = player.getPermission();  
+        int per = player.getPermission();
         String about = "";
         String type = (per == 1 ? "Admin" : "User");
-        
-        if (this.language.equals("iw"))
-        {
-            if (type.equals("Admin")) type = "אדמין";
-            else
-                type = "משתמש";
-                   about = "סוג חשבון: " + type + "\nאודות " + player.getUserName() + "\n\nשם: "
-                + player.getFirstName() + " " + player.getLastName() + "\nמין: " + player.getGender() + "\n";
-        JOptionPane.showMessageDialog(null, about);
-        }
-        else{
 
-        about = "Account Type: " + type + "\nAbout " + player.getUserName() + "\n\nName: "
-                + player.getFirstName() + " " + player.getLastName() + "\nGender: " + player.getGender() + "\n";
-        JOptionPane.showMessageDialog(null, about);
+        if (this.language.equals("iw")) {
+            if (type.equals("Admin")) {
+                type = "אדמין";
+            } else {
+                type = "משתמש";
+            }
+            about = "סוג חשבון: " + type + "\nאודות " +
+                    player.getUserName() + "\n\nשם: "
+                    + player.getFirstName() + " " + player.getLastName() 
+                    + "\nמין: " + player.getGender() + "\n";
+            JOptionPane.showMessageDialog(null, about);
+        } else {
+
+            about = "Account Type: " + type + "\nAbout " + player.getUserName()
+                    + "\n\nName: "
+                    + player.getFirstName() + " " + player.getLastName()
+                    + "\nGender: " + player.getGender() + "\n";
+            JOptionPane.showMessageDialog(null, about);
         }
     }//GEN-LAST:event_mnuItmAboutActionPerformed
 
     private void mnuItmRemoveAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItmRemoveAccountActionPerformed
-       int confirmed;
+        int confirmed;
 
-       if (this.language.equals("iw"))
-       {
-         confirmed = JOptionPane.showConfirmDialog(null, 
-        "האם אתה בטוח שברצונך למחוק את החשבון?", "מחיקת חשבון",
-        JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
-       }
-       else{    
-        confirmed = JOptionPane.showConfirmDialog(null, 
-        "Are you sure you want to remove your account?", "Remove Account",
-        JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
-       }
-       
-    if (confirmed == JOptionPane.YES_OPTION) {
-        if (this.language.equals("iw"))
-        {
-          JOptionPane.showMessageDialog(null,"מקווים לראותך שוב בקרוב!!");
+        if (this.language.equals("iw")) {
+            confirmed = JOptionPane.showConfirmDialog(null,
+                    "האם אתה בטוח שברצונך למחוק את החשבון?", "מחיקת חשבון",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        } else {
+            confirmed = JOptionPane.showConfirmDialog(null,
+                    "Are you sure you want to remove your account?",
+                    "Remove Account",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         }
-        else{
-       JOptionPane.showMessageDialog(null,"Hope to see you soon!");
+
+        if (confirmed == JOptionPane.YES_OPTION) {
+            if (this.language.equals("iw")) {
+                JOptionPane.showMessageDialog(null, 
+                        "מקווים לראותך שוב בקרוב!!");
+            } else {
+                JOptionPane.showMessageDialog(null, 
+                        "Hope to see you soon!");
+            }
+            player.removeAccount(player);
+            this.dispose();
+            previous.setVisible(true);
         }
-      player.removeAccount(player);
-      this.dispose();
-      previous.setVisible(true);
-    }
     }//GEN-LAST:event_mnuItmRemoveAccountActionPerformed
 
     private void labBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labBackMouseClicked
@@ -347,44 +346,13 @@ public JMenuBar getMenu()
         previous.setVisible(true);
     }//GEN-LAST:event_labBackMouseClicked
 
-    private void mnuItemRulesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemRulesActionPerformed
-       new TableRules().setVisible(true);
-    }//GEN-LAST:event_mnuItemRulesActionPerformed
+    private void mnuItemGameRulesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemGameRulesActionPerformed
+        if (this.language.equals("iw"))
+           new TableRules(language).setVisible(true);
+        else
+        new TableRules().setVisible(true);
+    }//GEN-LAST:event_mnuItemGameRulesActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UserHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UserHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UserHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UserHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UserHome().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JButton btnPlay;
@@ -394,7 +362,7 @@ public JMenuBar getMenu()
     protected javax.swing.JLabel labWelcomeUser;
     protected javax.swing.JMenuBar menuBar;
     protected javax.swing.JMenu mnuAccount;
-    protected javax.swing.JMenuItem mnuItemRules;
+    protected javax.swing.JMenuItem mnuItemGameRules;
     protected javax.swing.JMenuItem mnuItmAbout;
     protected javax.swing.JMenuItem mnuItmChangePassword;
     protected javax.swing.JMenuItem mnuItmRemoveAccount;

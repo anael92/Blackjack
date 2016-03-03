@@ -1,35 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Forms;
 
 import Resources.LocalizationUtil;
 import Users.User;
+import java.awt.Cursor;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.WindowEvent;
-import java.util.Locale;
-import java.util.ResourceBundle;
 import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 
 /**
  *
- * @author IBM
+ * @author ANI
  */
+
 public class AdminHome extends UserHome {
     WelcomeScreen previous = null;
     User player = null;
     JMenu mnuAdminOptions = new JMenu();
-    JMenuItem mnuItmChangePermission = new JMenuItem();
-    JMenuItem mnuItmDeleteUser = new JMenuItem();
     String language = "";
     boolean isHebrew = false;
+    
     /**
      * Creates new form AdminHome
      */
@@ -48,15 +37,19 @@ public class AdminHome extends UserHome {
          this.language = lang;
         if (lang.equals("iw"))
         {
-             LocalizationUtil.localizedResourceBundle = LocalizationUtil.getBundleHomeIW();
-             mnuAdminOptions.setText(LocalizationUtil.localizedResourceBundle.getString("mnuAdminOptions"));
+             LocalizationUtil.localizedResourceBundle =
+                     LocalizationUtil.getBundleHomeIW();
+             mnuAdminOptions.setText
+        (LocalizationUtil.localizedResourceBundle.getString("mnuAdminOptions"));
             super.changeToHebrew();
         }
     }
      private void initMyComponents()
      {
         addListeners(); 
-        mnuAdminOptions.setText("Admin Options");     
+        mnuAdminOptions.setText("Admin Options");   
+        mnuAdminOptions.setCursor
+        (Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         menuBar.add(mnuAdminOptions);
         setJMenuBar(menuBar);
      }
@@ -105,44 +98,10 @@ public class AdminHome extends UserHome {
             .addGap(0, 356, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(689, 420));
+        setSize(new java.awt.Dimension(632, 435));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AdminHome().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

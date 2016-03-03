@@ -1,16 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package blackjack;
 
-import java.util.Comparator;
+package blackjack;
 
 /**
  *
- * @author Anael
+ * @author ANI
  */
+
+// This class helps with organize score table
+ 
 public class Score implements Comparable{
     
     private String userName;
