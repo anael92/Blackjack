@@ -101,7 +101,8 @@ public class ScoreTable extends javax.swing.JFrame {
     private void initTable() {
         GameUtil.setIcon(this);
         DB db = DB.getInstance();
-        String sql = "SELECT * FROM APP.SCORE";
+        String sql = "SELECT * FROM BLACKJACK.SCORE";
+
         try {
             Class.forName(DBUtils.DbDriverClass);
             Connection connection = DriverManager.getConnection(

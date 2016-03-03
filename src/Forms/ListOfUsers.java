@@ -90,7 +90,7 @@ public class ListOfUsers extends javax.swing.JFrame {
 
         GameUtil.setIcon(this);
         DB db = DB.getInstance();
-        String sql = "SELECT ID,FIRSTNAME,LASTNAME,GENDER,USERNAME FROM APP.USERS";
+        String sql = "SELECT ID,FIRSTNAME,LASTNAME,GENDER,USERNAME FROM BLACKJACK.USERS";
         try {
             Class.forName(DBUtils.DbDriverClass);
             Connection connection = DriverManager.getConnection(
