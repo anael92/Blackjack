@@ -39,6 +39,7 @@ public class ListOfUsers extends javax.swing.JFrame {
         initComponents();
         this.previous = previous;
         initTable();
+        
     }
     
      public ListOfUsers(AdminHome previous, String lang) {
@@ -144,9 +145,11 @@ public class ListOfUsers extends javax.swing.JFrame {
         btnChangePermission = new javax.swing.JButton();
         btnRemoveUser = new javax.swing.JButton();
         labBack = new javax.swing.JLabel();
+        labBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("BlackJack ANI - ADMIN");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -181,7 +184,7 @@ public class ListOfUsers extends javax.swing.JFrame {
         jScrollPane1.setViewportView(usersTable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(0, 51, 527, 402);
+        jScrollPane1.setBounds(20, 50, 527, 440);
 
         btnChangePermission.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnChangePermission.setText("Change Permission");
@@ -191,7 +194,7 @@ public class ListOfUsers extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnChangePermission);
-        btnChangePermission.setBounds(260, 10, 163, 33);
+        btnChangePermission.setBounds(280, 10, 200, 33);
 
         btnRemoveUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnRemoveUser.setText("Remove User");
@@ -201,7 +204,7 @@ public class ListOfUsers extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRemoveUser);
-        btnRemoveUser.setBounds(100, 10, 150, 33);
+        btnRemoveUser.setBounds(70, 10, 200, 33);
 
         labBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/specialBack.png"))); // NOI18N
         labBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -211,9 +214,13 @@ public class ListOfUsers extends javax.swing.JFrame {
             }
         });
         getContentPane().add(labBack);
-        labBack.setBounds(485, 0, 32, 32);
+        labBack.setBounds(510, 10, 32, 32);
 
-        setSize(new java.awt.Dimension(543, 549));
+        labBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ListUsersBackground.jpg"))); // NOI18N
+        getContentPane().add(labBackground);
+        labBackground.setBounds(0, 0, 590, 500);
+
+        setSize(new java.awt.Dimension(590, 525));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -351,6 +358,7 @@ public class ListOfUsers extends javax.swing.JFrame {
     private javax.swing.JButton btnRemoveUser;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labBack;
+    private javax.swing.JLabel labBackground;
     private javax.swing.JTable usersTable;
     // End of variables declaration//GEN-END:variables
 }

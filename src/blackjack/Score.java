@@ -54,22 +54,13 @@ public class Score implements Comparable{
     public void setBalance(int balance) {
         this.balance = balance;
     }
-    
-    public int compareTo(Score comparestu) {
-        int compareage=((Score)comparestu).getBalance();
-        /* For Ascending order*/
-        return this.balance-compareage;
-
-        /* For Descending order do like this */
-        //return compareage-this.studentage;
-    }
 
     @Override
     public int compareTo(Object o) {
         if (o instanceof Score)
         {
            int compareage=((Score)o).getBalance();
-        /* For Ascending order*/
+        /* For Descending order*/
         return compareage-this.getBalance();
         }
         else return 0;
